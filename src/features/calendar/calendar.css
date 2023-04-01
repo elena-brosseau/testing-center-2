@@ -1,0 +1,38 @@
+
+#calendar-container {
+  height: 100vh;
+  padding: 40px 10px 60px;
+}
+
+/* nav */
+
+#calendar-head {
+  display: flex;
+  padding: 0 30px;
+}
+
+#calendar-head button {
+  margin-right: 10px;
+}
+
+
+/* appt-list */
+
+h2 {
+    font-size: 18px;
+    font-weight: 500;
+    color: rgb(40, 40, 40);
+    margin: 20px 0 0;
+    border-bottom: 1px solid rgb(178, 178, 178);
+  }
+  
+  #appt-list {
+    height: calc(100%);
+    width: 100%;
+    overflow-y: scroll;
+    padding: 0 30px;
+  }
+  
+  .day {
+    margin: 40px 0;
+  }

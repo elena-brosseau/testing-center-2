@@ -1,0 +1,30 @@
+
+
+.viewport {
+    height: 100vh;
+    padding: 40px;
+}
+
+.viewport-tabs {
+    display: flex;
+    height: 40px;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+.tab {
+    padding: 10px 20px;
+    margin: 0 5px;
+}
+
+.viewport-content {
+    border: 1px solid rgb(144, 144, 144);
+    box-shadow: 1px 1px rgb(144, 144, 144);
+    height: calc(100% - 40px);
+    width: 100%;
+    /* background-color: rgb(255, 251, 237); */
+    border-radius: 15px;
+}

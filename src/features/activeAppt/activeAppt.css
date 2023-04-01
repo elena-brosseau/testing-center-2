@@ -1,0 +1,39 @@
+
+#active-appt-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 50px 5%;
+    max-width: 600px;
+}
+
+#active-appt-grid div {
+    margin-top: 24px;
+}
+
+#active-appt-grid p, #active-appt-grid li {
+    margin-top: 5px;
+}
+
+#active-appt-grid .left {
+    text-align: end;
+}
+
+.student-name {
+    font-size: 20px;
+}
+
+.time-info {
+    display: grid;
+    grid-template-columns: 80% 20%;
+}
+
+.appt-notes {
+    grid-column: span 2;
+}
+
+.appt-class {
+    grid-column: span 2;
+    border-bottom: 2px solid black;
+    font-size: 18px;
+}
+

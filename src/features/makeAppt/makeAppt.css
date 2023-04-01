@@ -1,0 +1,19 @@
+
+
+#appt-form {
+    width: 100%;
+    padding: 50px;
+}
+
+#appt-form input {
+    font-size: 16px;
+    padding: 4px 8px;
+}
+
+#student-name {
+    margin: 0 auto;
+}
+
+#appt-form p {
+    margin: 30px 0 10px;
+}

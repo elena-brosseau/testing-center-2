@@ -1,0 +1,43 @@
+
+.appt-container {
+    border-bottom: 1px solid rgb(178, 178, 178);
+  }
+
+.appt {
+  width: 100%;
+  margin: 10px 0;
+  padding: 15px 25px;
+  border-radius: 10px;
+  border: 1px solid gray;
+  box-shadow: 1px 1px 0px gray;
+  cursor: pointer;
+}
+
+.appt.selected {
+  border: 2px solid black;
+  box-shadow: none;
+}
+
+.appt .appt-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.checks {
+  text-align: end;
+  font-weight: bold;
+}
+
+.checks img {
+  height: 1rem;
+}
+
+.appt-head {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: .2rem;
+}
+
+.appt-subhead {
+  color: rgb(49, 49, 49);
+}
