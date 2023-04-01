@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 import { nextFiveDates } from "../../utils/nextFiveDates";
 import { CalendarAppt } from "../calendarAppt/CalendarAppt";
 import './calendar.css'
+import { v4 as uuid } from 'uuid';
 
 export function Calendar() {
 
@@ -42,6 +43,8 @@ export function Calendar() {
         setDatePicker('');
       }
 
+      console.log(uuid())
+
 
     return (
         <div id="calendar-container">
@@ -55,13 +58,13 @@ export function Calendar() {
                 </form>
             </div>
             <div id="appt-list">
-                {nextFiveDates(firstDate, appointments).map((date, index) => 
-                    <div key={index} className='day'>
+                {nextFiveDates(firstDate, appointments).map((date) => 
+                    <div key={uuid()} className='day'>
                         <h2>{date.date.toDateString()}</h2>
-                        {date.appts.map((appt, index) => 
+                        {date.appts.map((appt) => 
                             <CalendarAppt 
-                                key={index}
-                                id={index}
+                                key={uuid()}
+                                id={uuid()}
                                 appt={appt}
                                 selected={selected}
                                 setSelected={setSelected}

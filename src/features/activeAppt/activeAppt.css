@@ -1,9 +1,17 @@
 
+
+#active-appt h2 {
+
+    font-size: 24px;
+    font-weight: 500;
+    padding: 40px 7% 0;
+}
+
 #active-appt-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding: 50px 5%;
-    max-width: 600px;
+    padding: 0 7%;
+    margin: 0 0 50px;
 }
 
 #active-appt-grid div {
@@ -16,6 +24,10 @@
 
 #active-appt-grid .left {
     text-align: end;
+}
+
+#active-appt-grid .title {
+    font-weight: 500;
 }
 
 .student-name {

@@ -7,6 +7,10 @@
     font-family: Roboto;
   }
 
+  html {
+    background-color: rgb(246, 252, 255);
+  }
+
   ul {
     list-style: none;
     padding: 0;
@@ -19,5 +23,5 @@
   
   #grid {
     display: grid;
-    grid-template-columns: 600px 700px;
+    grid-template-columns: minmax(500px, 600px) minmax(640px, 700px);
   }

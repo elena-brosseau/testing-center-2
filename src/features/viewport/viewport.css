@@ -8,6 +8,8 @@
 .viewport-tabs {
     display: flex;
     height: 40px;
+    position: relative;
+    left: 5px;
 }
 
 a {
@@ -15,9 +17,42 @@ a {
     text-decoration: none;
 }
 
+
 .tab {
     padding: 10px 20px;
-    margin: 0 5px;
+    margin: 0 10px;
+    border: 1px solid rgb(255, 243, 206);
+    background-color: rgb(255, 243, 206);
+    position: relative;
+    float: left;
+    border-radius: 5px 0 0 0;
+    border-top: 1px solid gray;
+    border-left: 1px solid gray;
+}
+
+.tab.active {
+    z-index: 10;
+    box-shadow: 0 2px rgb(255, 243, 206);
+}
+
+.tab.active::after {
+    box-shadow: 0 2px rgb(255, 243, 206), 1px 0 rgb(144, 144, 144);
+}
+
+.tab::after {
+    content:'';
+    position:absolute;
+    z-index: 1;
+    top: 0;
+    right: -.5em;
+    bottom: 0;
+    width: 1em;
+    background-color: rgb(255, 243, 206);
+    transform: skew(10deg) scale(1.05);
+    border-radius: 0 5px 0 0;
+    border-top: 1px solid gray;
+    border-right: 1px solid gray;
+    box-shadow: 1px 0 rgb(144, 144, 144);
 }
 
 .viewport-content {
@@ -25,6 +60,6 @@ a {
     box-shadow: 1px 1px rgb(144, 144, 144);
     height: calc(100% - 40px);
     width: 100%;
-    /* background-color: rgb(255, 251, 237); */
+    background-color: rgb(255, 243, 206);
     border-radius: 15px;
 }

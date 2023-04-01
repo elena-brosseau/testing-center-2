@@ -6,7 +6,8 @@ export function ActiveAppt() {
     const activeAppt = useSelector((state) => state.activeAppointment.appointment);
 
     return (
-        <div>
+        <div id="active-appt">
+            <h2>Appointment Information</h2>
             {activeAppt &&
                 <div id="active-appt-grid">
                     <div>
@@ -23,18 +24,19 @@ export function ActiveAppt() {
                         <p>{activeAppt.student.phone}</p>
                     </div>
                     <div className="left">
-                        <p>Acommodations:</p>
+                        <p className="title">Acommodations:</p>
                         <ul>
                             {activeAppt.student.accomms.map((accomm, index) =>
                                 <li key={index}>{accomm}</li>
                             )}
+                            <li>{activeAppt.student.extraTime}</li>
                         </ul>
                     </div>
                     <div className="appt-class">
                         <p>{activeAppt.section.name} / {activeAppt.section.professor}</p>
                     </div>
                     <div>
-                        <p>Allowed Materials:</p>
+                        <p className="title">Allowed Materials:</p>
                         <ul>
                             {activeAppt.allowed.map((material, index) =>
                                 <li key={index}>{material}</li>
