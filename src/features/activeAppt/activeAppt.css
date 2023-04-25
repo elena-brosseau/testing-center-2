@@ -1,32 +1,48 @@
 
 
-#active-appt h2 {
-
-    font-size: 24px;
-    font-weight: 500;
-    padding: 40px 7% 0;
+.active-appt {
+    overflow-y: scroll;
+    height: 90%;
+    margin: 20px;
 }
 
-#active-appt-grid {
+.active-appt-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 5% 0;
+}
+
+.active-appt h2 {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.active-appt-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding: 0 7%;
+    padding: 0 5%;
     margin: 0 0 50px;
 }
 
-#active-appt-grid div {
+.active-appt-grid.lower {
+    grid-column: span 2;
+    padding: 0;
+    margin: 0;
+}
+
+.active-appt-grid div {
     margin-top: 24px;
 }
 
-#active-appt-grid p, #active-appt-grid li {
+.active-appt-grid p, .active-appt-grid li {
     margin-top: 5px;
 }
 
-#active-appt-grid .left {
+.active-appt-grid .left {
     text-align: end;
 }
 
-#active-appt-grid .title {
+.active-appt-grid .title {
     font-weight: 500;
 }
 

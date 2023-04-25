@@ -2,7 +2,7 @@
 
 .viewport {
     height: 100vh;
-    padding: 40px;
+    padding: 40px 5% 40px 2%;
 }
 
 .viewport-tabs {
@@ -21,8 +21,8 @@ a {
 .tab {
     padding: 10px 20px;
     margin: 0 10px;
-    border: 1px solid rgb(255, 243, 206);
-    background-color: rgb(255, 243, 206);
+    border: 1px solid rgb(255, 248, 226);
+    background-color: rgb(255, 248, 226);
     position: relative;
     float: left;
     border-radius: 5px 0 0 0;
@@ -32,11 +32,11 @@ a {
 
 .tab.active {
     z-index: 10;
-    box-shadow: 0 2px rgb(255, 243, 206);
+    box-shadow: 0 2px rgb(255, 248, 226);
 }
 
 .tab.active::after {
-    box-shadow: 0 2px rgb(255, 243, 206), 1px 0 rgb(144, 144, 144);
+    box-shadow: 0 2px rgb(255, 248, 226), 1px 0 rgb(144, 144, 144);
 }
 
 .tab::after {
@@ -47,7 +47,7 @@ a {
     right: -.5em;
     bottom: 0;
     width: 1em;
-    background-color: rgb(255, 243, 206);
+    background-color: rgb(255, 248, 226);
     transform: skew(10deg) scale(1.05);
     border-radius: 0 5px 0 0;
     border-top: 1px solid gray;
@@ -60,6 +60,6 @@ a {
     box-shadow: 1px 1px rgb(144, 144, 144);
     height: calc(100% - 40px);
     width: 100%;
-    background-color: rgb(255, 243, 206);
+    background-color: rgb(255, 248, 226);
     border-radius: 15px;
 }

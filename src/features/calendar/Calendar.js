@@ -43,8 +43,6 @@ export function Calendar() {
         setDatePicker('');
       }
 
-      console.log(uuid())
-
 
     return (
         <div id="calendar-container">
