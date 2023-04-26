@@ -8,7 +8,6 @@ import { AllowedChecklist } from '../allowedChecklist/AllowedChecklist';
 export function EditAppt(props) {
 
     const activeAppt = useSelector((state) => state.activeAppointment.appointment);
-    const appointments = useSelector((state) => state.appointments.appointments);
     const students = useSelector((state) => state.students.students);
     const dispatch = useDispatch()
 
@@ -22,10 +21,14 @@ export function EditAppt(props) {
         }
         
     }
+
+    const [allowed, setAllowed] = useState(activeAppt.allowed);
+
     const [apptInfo, setApptInfo] = useState({
         time: offsetTimezone(activeAppt.date),
         day: activeAppt.date.toISOString().substring(0,10),
         student: activeAppt.student.name,
+        section: activeAppt.section.name,
         classTime: activeAppt.classTime,
         format: activeAppt.format,
         returnPref: activeAppt.returnPref,
@@ -36,9 +39,6 @@ export function EditAppt(props) {
 
     const studentObj = students.find(student => student.name === apptInfo.student);
 
-    const [section, setSection] = useState(activeAppt.section.name)
-    const [allowed, setAllowed] = useState(activeAppt.allowed);
-
     const handleCancelClick = () => {
         props.setEditMode(false)
     }
@@ -46,31 +46,25 @@ export function EditAppt(props) {
     const handleChange = (e) => {
         setApptInfo({
           ...apptInfo,
-          [e.target.name]: e.target.value
+          [e.target.name]: e.target.value,
         })
-        if (e.target.name === 'student') {
-            const student = students.find(student => student.name === e.target.value)
-            if (student) {
-                setSection(student.classes[0].name)
-            } else {
-                setSection('')
-            }
-        }
-      }
-
-    const handleSectionChange = (e) => {
-        setSection(e.target.value)
       }
 
     const handleSubmit = (e) => {
         e.preventDefault()
+
+        const day = apptInfo.day.split('-')
+        const time = apptInfo.time.split(':')
+
         dispatch(editAppt({
-            appointment: activeAppt,
+            apptToChange: activeAppt,
+            apptInfo: apptInfo,
+            date: new Date(day[0], --day[1], day[2], time[0], time[1]),
             student: studentObj,
-            section: studentObj.classes.find(x => x.name === section),
-            allowed: allowed,
-            data: apptInfo
+            section: studentObj.classes.find(x => x.name === apptInfo.section),
+            allowed: allowed
         }))
+
         handleCancelClick()
     }
 
@@ -104,8 +98,8 @@ export function EditAppt(props) {
                 </datalist>
                 <select
                     name='section'
-                    value={section}
-                    onChange={handleSectionChange}
+                    value={apptInfo.section}
+                    onChange={handleChange}
                 >
                     {studentObj && studentObj.classes.map(section => <option key={uuid()} >{section.name}</option>)}
                 </select>

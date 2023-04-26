@@ -8,13 +8,13 @@
   margin: 10px 0;
   padding: 15px 25px;
   border-radius: 10px;
-  border: 1px solid gray;
-  box-shadow: 1px 1px 0px gray;
+  outline: 1px solid gray;
+  box-shadow: 2px 2px 0px gray;
   cursor: pointer;
 }
 
 .appt.selected {
-  border: 2px solid black;
+  outline: 2px solid black;
   box-shadow: none;
 }
 

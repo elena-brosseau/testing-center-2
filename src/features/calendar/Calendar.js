@@ -5,13 +5,12 @@ import { nextFiveDates } from "../../utils/nextFiveDates";
 import { CalendarAppt } from "../calendarAppt/CalendarAppt";
 import './calendar.css'
 import { v4 as uuid } from 'uuid';
+import { Link } from "react-router-dom";
 
 export function Calendar() {
 
     const [firstDate, setFirstDate] = useState(new Date());
     const appointments = useSelector((state) => state.appointments.appointments);
-
-    const [selected, setSelected] = useState(null);
 
     const handlePrevClick = () => {
         const newDate = new Date(firstDate);
@@ -60,13 +59,11 @@ export function Calendar() {
                     <div key={uuid()} className='day'>
                         <h2>{date.date.toDateString()}</h2>
                         {date.appts.map((appt) => 
+                        <Link to='/' key={uuid()}>
                             <CalendarAppt 
-                                key={uuid()}
-                                id={uuid()}
                                 appt={appt}
-                                selected={selected}
-                                setSelected={setSelected}
                             />
+                        </Link>
                         )}
                     </div>)}
             </div>

@@ -1,27 +1,27 @@
 
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { setAppt } from '../../store/activeAppointmentSlice';
 import checkMark from '../../assets/check-mark.png';
 import './calendarAppt.css'
 
 export function CalendarAppt (props) {
 
+    const activeAppt = useSelector((state) => state.activeAppointment.appointment)
     const dispatch = useDispatch();
 
     const appt = props.appt;
     const pending = appt.checks() < 2;
 
-    const handleClick = (e) => {
+    const handleClick = () => {
         dispatch(setAppt(appt));
-        props.setSelected(props.id)
     }
 
     return (
 
         <div className="appt-container">
             <div 
-                className={props.selected == props.id ? "appt selected" : "appt"}
+                className={activeAppt == appt ? "appt selected" : "appt"}
                 onClick={(handleClick)}
                 style={{backgroundColor: pending ? '#fff2b3' : '#d6f2bd'}}
             >

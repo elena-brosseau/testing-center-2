@@ -1,9 +1,13 @@
 import { useSelector } from "react-redux";
 import './activeAppt.css';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { EditAppt } from '../editAppt/EditAppt';
 
-export function ActiveAppt() {
+export function ActiveAppt({ setActiveTab }) {
+
+    useEffect(() => {
+        setActiveTab(1)
+      }, [])
 
     const activeAppt = useSelector((state) => state.activeAppointment.appointment);
 

@@ -12,6 +12,10 @@ export class Appointment {
       this.notes = '';
       this.proctor = '';
       this.returned = '';
+      this.day = this.day;
+      this.time = this.time;
+      this.checks = this.checks;
+      this.totalTime = this.totalTime;
     }
 
     day() {

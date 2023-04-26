@@ -17,26 +17,22 @@ export const appointmentsSlice = createSlice({
     editAppt: (state, action) => {
 
       const data = action.payload
-      const apptToChange = data.appointment;
-      const appt = data.appointment;
-      
-      // convert day/time inputs to date object
-      const day = data.data.day.split('-')
-      const time = data.data.time.split(':')
-      appt.date = new Date(day[0], --day[1], day[2], time[0], time[1])
+      const apptToChange = data.apptToChange;
+      const newAppt = data.apptToChange;
 
-      appt.student = data.student
-      appt.section = data.section
-      appt.allowed = data.allowed
-      appt.classTime = data.data.classTime
-      appt.format = data.data.format
-      appt.returnPref = data.data.returnPref
-      appt.notes = data.data.notes
-      appt.proctor = data.data.proctor
-      appt.returned = data.data.returned
-      
+      newAppt.date = data.date
+      newAppt.student = data.student
+      newAppt.section = data.section
+      newAppt.allowed = data.allowed
+      newAppt.classTime = data.apptInfo.classTime
+      newAppt.format = data.apptInfo.format
+      newAppt.returnPref = data.apptInfo.returnPref
+      newAppt.notes = data.apptInfo.notes
+      newAppt.proctor = data.apptInfo.proctor
+      newAppt.returned = data.apptInfo.returned
+
       const newAppointments = [...state.appointments];
-      newAppointments[newAppointments.indexOf(apptToChange)] = appt;
+      newAppointments[newAppointments.indexOf(apptToChange)] = newAppt;
       newAppointments.sort((a, b) => a.date - b.date);
       state.appointments = newAppointments;
 
