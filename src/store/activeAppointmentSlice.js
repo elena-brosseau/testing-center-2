@@ -10,14 +10,11 @@ export const activeAppointmentSlice = createSlice({
   reducers: {
     setAppt: (state, action) => {
         state.appointment = action.payload
-    },
-    clearAppt: (state) => {
-      state.appointment = null;
     }
   },
 })
 
 
-export const { setAppt, clearAppt } = activeAppointmentSlice.actions
+export const { setAppt } = activeAppointmentSlice.actions
 
 export default activeAppointmentSlice.reducer
