@@ -15,7 +15,7 @@ export function CalendarAppt (props) {
     const pending = appt.checks() < 2;
 
     const student = students.find(student => student.key === appt.student);
-    console.log(student)
+    console.log(appt.student)
     const section = student.classes.find(section => section.name === appt.section.name)
 
     const handleClick = () => {

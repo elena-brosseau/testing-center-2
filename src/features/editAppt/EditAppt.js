@@ -41,7 +41,7 @@ export function EditAppt(props) {
     })
 
     const studentObj = students.find(student => student.name === apptInfo.student);
-    console.log(studentObj)
+    // console.log(studentObj)
 
     const handleCancelClick = () => {
         props.setEditMode(false)
@@ -64,7 +64,7 @@ export function EditAppt(props) {
             apptToChange: activeAppt,
             apptInfo: apptInfo,
             date: new Date(day[0], --day[1], day[2], time[0], time[1]),
-            student: studentObj,
+            student: studentObj.key,
             section: studentObj.classes.find(x => x.name === apptInfo.section),
             allowed: allowed
         }))
