@@ -19,7 +19,6 @@ export function EditAppt(props) {
         } else {
             return `${hour}${date.toISOString().substring(13,16)}`
         }
-        
     }
 
     const student = students.find(student => student.key === activeAppt.student);
@@ -27,27 +26,28 @@ export function EditAppt(props) {
 
     const [allowed, setAllowed] = useState(activeAppt.allowed);
 
+    const [appt, setAppt] = useState(activeAppt)
     const [apptInfo, setApptInfo] = useState({
         time: offsetTimezone(activeAppt.date),
         day: activeAppt.date.toISOString().substring(0,10),
         student: student.name,
-        section: section.name,
-        classTime: activeAppt.classTime,
-        format: activeAppt.format,
-        returnPref: activeAppt.returnPref,
-        notes: activeAppt.notes,
-        proctor: activeAppt.proctor,
-        returned: activeAppt.returned
+        section: section.name
     })
 
     const studentObj = students.find(student => student.name === apptInfo.student);
-    // console.log(studentObj)
 
     const handleCancelClick = () => {
         props.setEditMode(false)
     }
 
-    const handleChange = (e) => {
+    const handleApptChange = (e) => {
+        setAppt({
+            ...appt,
+            [e.target.name]: e.target.value,
+          })
+    }
+
+    const handleInfoChange = (e) => {
         setApptInfo({
           ...apptInfo,
           [e.target.name]: e.target.value,
@@ -60,13 +60,17 @@ export function EditAppt(props) {
         const day = apptInfo.day.split('-')
         const time = apptInfo.time.split(':')
 
-        dispatch(editAppt({
-            apptToChange: activeAppt,
-            apptInfo: apptInfo,
+        const newAppt = {
+            ...appt,
             date: new Date(day[0], --day[1], day[2], time[0], time[1]),
             student: studentObj.key,
-            section: studentObj.classes.find(x => x.name === apptInfo.section),
+            section: studentObj.classes.find(sec => sec.name === apptInfo.section),
             allowed: allowed
+        }
+
+        dispatch(editAppt({
+            apptToChange: activeAppt,
+            newAppt: newAppt
         }))
 
         handleCancelClick()
@@ -83,19 +87,19 @@ export function EditAppt(props) {
                     type="time"
                     name='time'
                     value={apptInfo.time}
-                    onChange={handleChange}
+                    onChange={handleInfoChange}
                 />
                 <input
                     type="date"
                     name='day'
                     value={apptInfo.day}
-                    onChange={handleChange}
+                    onChange={handleInfoChange}
                 />
                 <input
                     list='students'
                     name='student'
                     value={apptInfo.student}
-                    onChange={handleChange}
+                    onChange={handleInfoChange}
                 />
                 <datalist id='students'>
                     {students.map(student => <option key={uuid()}>{student.name}</option>)}
@@ -103,7 +107,7 @@ export function EditAppt(props) {
                 <select
                     name='section'
                     value={apptInfo.section}
-                    onChange={handleChange}
+                    onChange={handleInfoChange}
                 >
                     {studentObj && studentObj.classes.map(section => <option key={uuid()} >{section.name}</option>)}
                 </select>
@@ -116,45 +120,45 @@ export function EditAppt(props) {
                     <input
                         type='number'
                         name='classTime'
-                        value={apptInfo.classTime}
-                        onChange={handleChange}
+                        value={appt.classTime}
+                        onChange={handleApptChange}
                     />
                     <p>Test Format:</p>
                     <input
                         type='text'
                         name='format'
-                        value={apptInfo.format}
-                        onChange={handleChange}
+                        value={appt.format}
+                        onChange={handleApptChange}
                     />
                     <p>Return Preference:</p>
                     <input
                         type='text'
                         name='returnPref'
-                        value={apptInfo.returnPref}
-                        onChange={handleChange}
+                        value={appt.returnPref}
+                        onChange={handleApptChange}
                     />
                     <p>Notes:</p>
                     <textarea 
                         rows="5"
                         cols="33"
                         name="notes"
-                        value={apptInfo.notes}
-                        onChange={handleChange}
+                        value={appt.notes}
+                        onChange={handleApptChange}
                     >
                     </textarea>
                     <p>Proctor:</p>
                     <input
                         type='text'
                         name='proctor'
-                        value={apptInfo.proctor}
-                        onChange={handleChange}
+                        value={appt.proctor}
+                        onChange={handleApptChange}
                     />
                     <p>Returned</p>
                     <input
                         type='text'
                         name='returned'
-                        value={apptInfo.returned}
-                        onChange={handleChange}
+                        value={appt.returned}
+                        onChange={handleApptChange}
                     />
                     <button type='submit'>Save</button>
                 </div>

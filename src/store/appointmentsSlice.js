@@ -16,26 +16,13 @@ export const appointmentsSlice = createSlice({
     },
     editAppt: (state, action) => {
 
-      const data = action.payload
-      const apptToChange = data.apptToChange;
-      const newAppt = data.apptToChange;
+      const {apptToChange, newAppt} = action.payload;
+      const index = state.appointments.indexOf(apptToChange);
 
-      newAppt.date = data.date
-      newAppt.student = data.student
-      newAppt.section = data.section
-      newAppt.allowed = data.allowed
-      newAppt.classTime = data.apptInfo.classTime
-      newAppt.format = data.apptInfo.format
-      newAppt.returnPref = data.apptInfo.returnPref
-      newAppt.notes = data.apptInfo.notes
-      newAppt.proctor = data.apptInfo.proctor
-      newAppt.returned = data.apptInfo.returned
+      const newAppointments = [...state.appointments]
+      newAppointments[index] = newAppt
 
-      const newAppointments = [...state.appointments];
-      newAppointments[newAppointments.indexOf(apptToChange)] = newAppt;
-      newAppointments.sort((a, b) => a.date - b.date);
-      state.appointments = newAppointments;
-
+      state.appointments = newAppointments
     }
   },
 })
