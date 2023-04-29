@@ -15,23 +15,13 @@ export const studentsSlice = createSlice({
     },
     editStudent: (state, action) => {
 
-      const newStudents = state.students
-      const studentToChange = action.payload.studentToChange
-      const newStudentInfo = action.payload.newStudentInfo
-      const index = newStudents.indexOf(studentToChange)
+      const {studentToChange, newStudentInfo} = action.payload
+      const index = state.students.indexOf(studentToChange)
 
-      studentToChange.name = newStudentInfo.name
-      studentToChange.id = newStudentInfo.id
-      studentToChange.phone = newStudentInfo.phone
-      studentToChange.accomms = newStudentInfo.accomms
-      studentToChange.extraTime = newStudentInfo.extraTime
-
-
-      newStudents[index] = studentToChange;
-      newStudents[index].classes = newStudentInfo.classes
+      const newStudents = [...state.students]
+      newStudents[index] = newStudentInfo
 
       state.students = newStudents;
-
     }
   },
 })

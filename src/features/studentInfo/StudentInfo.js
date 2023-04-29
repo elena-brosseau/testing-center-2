@@ -13,14 +13,7 @@ export function StudentInfo({ student }) {
 
     const [edit, setEdit] = useState(false);
     const [addClass, setAddClass] = useState(false);
-    const [studentInfo, setStudentInfo] = useState({
-        name: student.name,
-        id: student.id,
-        phone: student.phone,
-        accomms: student.accomms,
-        extraTime: student.extraTime,
-        classes: student.classes
-    })
+    const [studentInfo, setStudentInfo] = useState(student);
 
     const accommOptions = ['Reader', 'Word Processor', 'Calculator', 'Scantron Assistance', 'Scribe', 'Short Breaks', 'Food and Drink']
     const extraTimeOptions = ['1.5', '2.0', '1.0']
