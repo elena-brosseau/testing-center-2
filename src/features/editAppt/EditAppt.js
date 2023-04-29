@@ -22,13 +22,16 @@ export function EditAppt(props) {
         
     }
 
+    const student = students.find(student => student.key === activeAppt.student);
+    const section = student.classes.find(section => section.name === activeAppt.section.name)
+
     const [allowed, setAllowed] = useState(activeAppt.allowed);
 
     const [apptInfo, setApptInfo] = useState({
         time: offsetTimezone(activeAppt.date),
         day: activeAppt.date.toISOString().substring(0,10),
-        student: activeAppt.student.name,
-        section: activeAppt.section.name,
+        student: student.name,
+        section: section.name,
         classTime: activeAppt.classTime,
         format: activeAppt.format,
         returnPref: activeAppt.returnPref,
@@ -38,6 +41,7 @@ export function EditAppt(props) {
     })
 
     const studentObj = students.find(student => student.name === apptInfo.student);
+    console.log(studentObj)
 
     const handleCancelClick = () => {
         props.setEditMode(false)

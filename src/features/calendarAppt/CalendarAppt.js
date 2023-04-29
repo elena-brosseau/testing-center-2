@@ -8,10 +8,15 @@ import './calendarAppt.css'
 export function CalendarAppt (props) {
 
     const activeAppt = useSelector((state) => state.activeAppointment.appointment)
+    const students = useSelector((state) => state.students.students)
     const dispatch = useDispatch();
 
     const appt = props.appt;
     const pending = appt.checks() < 2;
+
+    const student = students.find(student => student.key === appt.student);
+    console.log(student)
+    const section = student.classes.find(section => section.name === appt.section.name)
 
     const handleClick = () => {
         dispatch(setAppt(appt));
@@ -29,11 +34,11 @@ export function CalendarAppt (props) {
                     <div className="appt-content-left">
                         <div className="appt-head">
                             <span className="time">{appt.time()} - </span>
-                            <span className="student-name">{appt.student.name}</span>
+                            <span className="student-name">{student.name}</span>
                         </div>
                         <div className="appt-subhead">
-                            <span className="section">{appt.section.name} // </span>
-                            <span className="prof">{appt.section.professor}</span>
+                            <span className="section">{section.name} // </span>
+                            <span className="prof">{section.professor}</span>
                         </div>
                     </div>
                     <div className="checks">

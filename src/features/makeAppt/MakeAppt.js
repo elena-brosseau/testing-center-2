@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { addAppt } from '../../store/appointmentsSlice';
-import { setAppt, clearAppt } from '../../store/activeAppointmentSlice';
+import { setAppt } from '../../store/activeAppointmentSlice';
 import { Appointment } from '../../utils/appointment'
 import './makeAppt.css';
 import { Link } from 'react-router-dom';
 import { setDate } from '../../store/firstCalendarDateSlice';
-import { nextFiveDates } from '../../utils/nextFiveDates';
 
 
 // Display class options
@@ -53,8 +52,6 @@ export function MakeAppt({ setActiveTab }) {
   const day = apptInfo.day.split('-')
   const time = apptInfo.time.split(':')
   const date = new Date(day[0], --day[1], day[2], time[0], time[1])
-  // appointment object
-  const appointment = new Appointment(studentObj, section, date)
 
   const handleChange = (e) => {
     setApptInfo({
@@ -68,6 +65,8 @@ export function MakeAppt({ setActiveTab }) {
 
     // check if a class is selected
     if (section) {
+      const appointment = new Appointment(studentObj.key, section, date)
+      
       dispatch(addAppt(appointment))
       setApptSelect(appointment)
       setConfirmed(true)

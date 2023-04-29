@@ -10,7 +10,11 @@ export function ActiveAppt({ setActiveTab }) {
       }, [])
 
     const activeAppt = useSelector((state) => state.activeAppointment.appointment);
+    const students = useSelector((state) => state.students.students)
 
+    const student = activeAppt && students.find(student => student.key === activeAppt.student);
+    const section = activeAppt && student.classes.find(section => section.name === activeAppt.section.name)
+    
     const [editMode, setEditMode] = useState(false);
 
     const handleEditClick = () => {
@@ -45,21 +49,21 @@ export function ActiveAppt({ setActiveTab }) {
                             }
                         </div>
                         <div className='student-info'>
-                            <p className="student-name">{activeAppt.student.name}</p>
-                            <p>{activeAppt.student.id}</p>
-                            <p>{activeAppt.student.phone}</p>
+                            <p className="student-name">{student.name}</p>
+                            <p>{student.id}</p>
+                            <p>{student.phone}</p>
                         </div>
                         <div className="left">
                             <p className="title">Acommodations:</p>
                             <ul>
-                                {activeAppt.student.accomms.map((accomm, index) =>
+                                {student.accomms.map((accomm, index) =>
                                     <li key={index}>{accomm}</li>
                                 )}
-                                <li>{activeAppt.student.extraTime}</li>
+                                <li>{student.extraTime}</li>
                             </ul>
                         </div>
                         <div className="appt-class">
-                            <p>{activeAppt.section.name} / {activeAppt.section.professor}</p>
+                            <p>{section.name} / {section.professor}</p>
                         </div>
                         {
                             (activeAppt.format || activeAppt.classTime)

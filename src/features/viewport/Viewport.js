@@ -2,7 +2,7 @@ import './viewport.css'
 import { Link, Route, Routes } from 'react-router-dom';
 import { ActiveAppt } from '../activeAppt/ActiveAppt';
 import { MakeAppt } from '../makeAppt/MakeAppt';
-import { AddStudent } from '../addStudent/AddStudent';
+import { Students } from '../students/Students';
 import { useState } from 'react';
 
 export function Viewport() {
@@ -21,9 +21,9 @@ export function Viewport() {
                     className={activeTab == 2 ? 'tab active' : 'tab'}
                 >Make Appointment</Link>
                 <Link
-                    to="/add-student"
+                    to="/students"
                     className={activeTab == 3 ? 'tab active' : 'tab'}
-                >Add Student</Link>
+                >Students</Link>
             </div>
             <div className='viewport-content'>
                 <Routes>
@@ -36,8 +36,8 @@ export function Viewport() {
                         element={<MakeAppt setActiveTab={setActiveTab}/>}
                     ></Route>
                     <Route
-                        path="/add-student"
-                        element={<AddStudent setActiveTab={setActiveTab}/>}
+                        path="/students"
+                        element={<Students setActiveTab={setActiveTab}/>}
                     ></Route>
                 </Routes>
             </div>
