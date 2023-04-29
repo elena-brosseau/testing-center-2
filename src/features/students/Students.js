@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { setAppt } from '../../store/activeAppointmentSlice'
 import { v4 as uuid } from 'uuid'
 import { StudentInfo } from "../studentInfo/StudentInfo"
+import { AddStudent } from "../addStudent/AddStudent"
 
 
 export function Students({ setActiveTab }) {
@@ -39,7 +40,11 @@ export function Students({ setActiveTab }) {
             {add
             ? <div>
                 <button onClick={handleAddClick}>Back</button>
-                <p>add</p>
+                <AddStudent
+                    setAdd={setAdd}
+                    setLookup={setLookup}
+                    setLookupStudent={setLookupStudent}
+                />
               </div>
             : lookup
             ? <div>

@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { students } from '../utils/studentsPreload'
-import { Student } from '../utils/student'
 
 const initialState = {
   students: students,
