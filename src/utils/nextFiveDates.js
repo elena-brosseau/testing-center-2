@@ -27,13 +27,18 @@ export function nextFiveDates(firstDate, appointments) {
     
         day.date = newNextDay;
         day.appts = appointments.filter((appt) => 
-            appt.date.getFullYear() == newNextDay.getFullYear()
-            && appt.date.getMonth() == newNextDay.getMonth()
-            && appt.date.getDate() == newNextDay.getDate()
+            getDate(appt.date) == newNextDay.toISOString()
         )
-    
+
         nextFiveDates.push(day);
     }
 
     return nextFiveDates;
+}
+
+function getDate(iso) {
+    const date = new Date(iso)
+    date.setHours(0, 0, 0, 0)
+
+    return date.toISOString()
 }

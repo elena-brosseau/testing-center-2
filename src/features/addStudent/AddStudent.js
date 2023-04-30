@@ -1,12 +1,13 @@
 import { useState } from 'react'
 import './addStudent.css'
 import { EditStudent } from '../editStudent/EditStudent'
-import { Student } from '../../utils/student'
-import { Link } from 'react-router-dom'
 
 export function AddStudent({ setAdd, setLookup, setLookupStudent}) {
 
-    const [student, setStudent] = useState(new Student('', '', '', '', ''))
+    const [student, setStudent] = useState({
+        accomms: [],
+        classes: []
+    })
     const [edit, setEdit] = useState(true)
 
     const handleDetailsClick = () => {
@@ -16,7 +17,10 @@ export function AddStudent({ setAdd, setLookup, setLookupStudent}) {
     }
 
     const resetForm = () => {
-        setStudent(new Student('', '', '', '', ''))
+        setStudent({
+            accomms: [],
+            classes: []
+        })
         setEdit(true)
     }
 

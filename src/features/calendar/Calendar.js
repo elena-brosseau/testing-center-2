@@ -22,26 +22,26 @@ export function Calendar() {
         if (!activeAppt) {
             return true;
         } else {
-            return nextFiveDates(date, appointments).find(day => day.date.toDateString() === activeAppt.date.toDateString())
+            return nextFiveDates(date, appointments).find(day => day.date.toDateString() === new Date(activeAppt.date).toDateString())
         }
     }
 
     const handlePrevClick = () => {
         const newDate = new Date(firstDate);
         newDate.setDate(newDate.getDate() - 7)
-        dispatch(setDate(newDate))
+        dispatch(setDate(newDate.toISOString()))
         dispatch(setAppt(null))
     }
 
     const handleNextClick = () => {
         const newDate = new Date(firstDate);
         newDate.setDate(newDate.getDate() + 7)
-        dispatch(setDate(newDate))
+        dispatch(setDate(newDate.toISOString()))
         dispatch(setAppt(null))
     }
 
     const handleTodayClick = () => {
-        dispatch(setDate(new Date()))
+        dispatch(setDate(new Date().toISOString()))
         !includesActiveAppt(new Date()) && dispatch(setAppt(null))
     }
 
@@ -55,7 +55,7 @@ export function Calendar() {
         e.preventDefault();
         const dateArr = datePicker.split('-');
         const newDate = new Date(dateArr[0], dateArr[1] - 1, dateArr[2]);
-        dispatch(setDate(newDate))
+        dispatch(setDate(newDate.toISOString()))
         !includesActiveAppt(newDate) && dispatch(setAppt(null))
         setDatePicker('');
       }
@@ -73,7 +73,7 @@ export function Calendar() {
                 </form>
             </div>
             <div id="appt-list">
-                {nextFiveDates(firstDate, appointments).map((date) => 
+                {nextFiveDates(new Date(firstDate), appointments).map((date) => 
                     <div key={uuid()} className='day'>
                         <h2>{date.date.toDateString()}</h2>
                         {date.appts.map((appt) => 

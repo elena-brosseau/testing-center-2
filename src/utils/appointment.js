@@ -1,43 +1,24 @@
 
 
-export class Appointment {
-    constructor(student, section, date) {
-      this.student = student;
-      this.section = section;
-      this.date = date;
-      this.allowed = [];
-      this.format = null;
-      this.classTime = null;
-      this.returnPref = '';
-      this.notes = '';
-      this.proctor = '';
-      this.returned = '';
-      this.day = this.day;
-      this.time = this.time;
-      this.checks = this.checks;
-      this.totalTime = this.totalTime;
-    }
+export function getISOTime(date) {
+    return new Date(date).toLocaleTimeString().replace(/(.*)\D\d+/, '$1');
+}
 
-    day() {
-        return this.date.toDateString();
-    }
+export function getISODay(date) {
+    return new Date(date).toDateString();
+}
 
-    time() {
-        return this.date.toLocaleTimeString().replace(/(.*)\D\d+/, '$1');
-    }
+export function apptChecks(test, form) {
+    let checks = 0;
+    test && checks ++
+    form && checks ++
+    return checks
+}
 
-    checks() {
-        let checks = 0;
-        this.format && checks ++
-        this.classTime && checks ++
-        return checks
-    }
+export function totalTime(classTime, extraTime) {
+    const mins = classTime * +extraTime;
+    const minutes = Math.floor(mins % 60);
+    const hours = Math.floor(mins / 60);
 
-    totalTime() {
-        const mins = this.classTime * +this.student.extraTime;
-        const minutes = Math.floor(mins % 60);
-        const hours = Math.floor(mins / 60);
-
-        return `${hours}:${minutes}`;
-    }
+    return `${hours}:${minutes}`;
 }

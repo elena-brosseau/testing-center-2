@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import './activeAppt.css';
 import { useEffect, useState } from "react";
 import { EditAppt } from '../editAppt/EditAppt';
+import { getISODay, getISOTime, totalTime } from "../../utils/appointment";
 
 export function ActiveAppt({ setActiveTab }) {
 
@@ -33,8 +34,8 @@ export function ActiveAppt({ setActiveTab }) {
                 {activeAppt &&
                     <div className="active-appt-grid">
                         <div>
-                            <p>{activeAppt.time()}</p>
-                            <p>{activeAppt.day()}</p>
+                            <p>{getISOTime(activeAppt.date)}</p>
+                            <p>{getISODay(activeAppt.date)}</p>
                         </div>
                         <div className="left">
                             {
@@ -80,7 +81,7 @@ export function ActiveAppt({ setActiveTab }) {
                                     <p>Time in Class:</p>
                                     <p>{activeAppt.classTime}</p>
                                     <p>Total Time:</p>
-                                    <p>{activeAppt.totalTime()}</p>
+                                    <p>{totalTime(activeAppt.classTime, student.extraTime)}</p>
                                 </div>
                                 <div>
                                     <p>Test Format: {activeAppt.format}</p>
