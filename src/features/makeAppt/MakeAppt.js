@@ -14,6 +14,7 @@ function Section({ active, section, onClick}) {
     return (
       <div 
         data-testid='section'
+        onClick={onClick}
         className={active ? 'highlight' : ''}
       >
         <p>{section.name}</p>
@@ -65,7 +66,13 @@ export function MakeAppt({ setActiveTab }) {
 
     // check if a class is selected
     if (section) {
-      const appointment = new Appointment(studentObj.key, section, date)
+
+      const appointment = {
+        student: studentObj.key,
+        section: section,
+        date: date.toISOString(),
+        allowed: [],
+    }
       
       dispatch(addAppt(appointment))
       setApptSelect(appointment)

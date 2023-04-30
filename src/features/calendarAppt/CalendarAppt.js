@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setAppt } from '../../store/activeAppointmentSlice';
 import checkMark from '../../assets/check-mark.png';
 import './calendarAppt.css'
+import { apptChecks, getISOTime } from '../../utils/appointment';
 
 export function CalendarAppt (props) {
 
@@ -12,7 +13,8 @@ export function CalendarAppt (props) {
     const dispatch = useDispatch();
 
     const appt = props.appt;
-    const pending = appt.checks() < 2;
+    const checks = apptChecks(appt.test, appt.form);
+    const pending = checks < 2;
 
     const student = students.find(student => student.key === appt.student);
     const section = student.classes.find(section => section.name === appt.section.name)
@@ -32,7 +34,7 @@ export function CalendarAppt (props) {
                 <div className="appt-content">
                     <div className="appt-content-left">
                         <div className="appt-head">
-                            <span className="time">{appt.time()} - </span>
+                            <span className="time">{getISOTime(appt.date)} - </span>
                             <span className="student-name">{student.name}</span>
                         </div>
                         <div className="appt-subhead">
@@ -41,8 +43,8 @@ export function CalendarAppt (props) {
                         </div>
                     </div>
                     <div className="checks">
-                        {appt.checks() 
-                        ? new Array(appt.checks()).fill(null).map((check, index) => 
+                        {checks 
+                        ? new Array(checks).fill(null).map((check, index) => 
                             <img src={checkMark} alt="check mark" key={index} />
                         )
                         : <p>Pending</p>
