@@ -13,8 +13,8 @@ function Section({ active, section, onClick}) {
     
     return (
       <div 
-        className={active && 'highlight'}
-        onClick={onClick}
+        data-testid='section'
+        className={active ? 'highlight' : ''}
       >
         <p>{section.name}</p>
         <p>{section.professor}</p>
@@ -111,7 +111,7 @@ export function MakeAppt({ setActiveTab }) {
                 : <form
                     id='appt-form'
                     onSubmit={handleSubmit}
-                    className={require && 'require'}
+                    className={require ? 'require' : ''}
                   >
                     <input
                         type='date'
