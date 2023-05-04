@@ -14,11 +14,10 @@ export const studentsSlice = createSlice({
     },
     editStudent: (state, action) => {
 
-      const {studentToChange, newStudentInfo} = action.payload
-      const index = state.students.indexOf(studentToChange)
+      const {studentIndex, newStudentInfo} = action.payload
 
       const newStudents = [...state.students]
-      newStudents[index] = newStudentInfo
+      newStudents[studentIndex] = newStudentInfo
 
       state.students = newStudents;
     }

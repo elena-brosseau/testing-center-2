@@ -42,11 +42,11 @@ export function EditStudent({ student, setEdit, setStudent }) {
 
     const handleSubmit = () => {
 
-        const existingStudent = students.find(st => st === student)
+        const studentIndex = students.indexOf(student)
 
-        if (existingStudent) {
+        if (studentIndex > -1) {
             dispatch(editStudent({
-                studentToChange: student,
+                studentIndex: studentIndex,
                 newStudentInfo: studentInfo
             }))
         } else {

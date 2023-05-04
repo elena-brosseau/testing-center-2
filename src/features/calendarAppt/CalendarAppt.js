@@ -1,18 +1,17 @@
 
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setAppt } from '../../store/activeAppointmentSlice';
+import { setActiveAppt } from '../../store/activeAppointmentSlice';
 import checkMark from '../../assets/check-mark.png';
 import './calendarAppt.css'
 import { apptChecks, getISOTime } from '../../utils/appointment';
 
-export function CalendarAppt (props) {
+export function CalendarAppt ({ appt }) {
 
     const activeAppt = useSelector((state) => state.activeAppointment.appointment)
     const students = useSelector((state) => state.students.students)
     const dispatch = useDispatch();
 
-    const appt = props.appt;
     const checks = apptChecks(appt.test, appt.form);
     const pending = checks < 2;
 
@@ -20,7 +19,7 @@ export function CalendarAppt (props) {
     const section = student.classes.find(section => section.name === appt.section.name)
 
     const handleClick = () => {
-        dispatch(setAppt(appt));
+        dispatch(setActiveAppt(appt));
     }
 
     return (

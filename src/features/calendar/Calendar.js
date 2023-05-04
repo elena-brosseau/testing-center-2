@@ -7,7 +7,7 @@ import './calendar.css'
 import { v4 as uuid } from 'uuid';
 import { Link } from "react-router-dom";
 import { setDate } from "../../store/firstCalendarDateSlice";
-import { setAppt } from "../../store/activeAppointmentSlice";
+import { setActiveAppt } from "../../store/activeAppointmentSlice";
 
 export function Calendar() {
 
@@ -30,19 +30,19 @@ export function Calendar() {
         const newDate = new Date(firstDate);
         newDate.setDate(newDate.getDate() - 7)
         dispatch(setDate(newDate.toISOString()))
-        dispatch(setAppt(null))
+        dispatch(setActiveAppt(null))
     }
 
     const handleNextClick = () => {
         const newDate = new Date(firstDate);
         newDate.setDate(newDate.getDate() + 7)
         dispatch(setDate(newDate.toISOString()))
-        dispatch(setAppt(null))
+        dispatch(setActiveAppt(null))
     }
 
     const handleTodayClick = () => {
         dispatch(setDate(new Date().toISOString()))
-        !includesActiveAppt(new Date()) && dispatch(setAppt(null))
+        !includesActiveAppt(new Date()) && dispatch(setActiveAppt(null))
     }
 
     const [datePicker, setDatePicker] = useState('');
@@ -56,7 +56,7 @@ export function Calendar() {
         const dateArr = datePicker.split('-');
         const newDate = new Date(dateArr[0], dateArr[1] - 1, dateArr[2]);
         dispatch(setDate(newDate.toISOString()))
-        !includesActiveAppt(newDate) && dispatch(setAppt(null))
+        !includesActiveAppt(newDate) && dispatch(setActiveAppt(null))
         setDatePicker('');
       }
 

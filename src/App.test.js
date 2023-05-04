@@ -14,9 +14,13 @@ const MockApp = () => {
     )
 }
 
+afterEach(() => {
+    cleanup();
+})
 
 test('should show active appointment in viewport', () => {
     render(
         <MockApp/>
     );
+    
 })

@@ -2,22 +2,24 @@ import { useState } from 'react';
 import './editAppt.css';
 import { useDispatch, useSelector } from "react-redux";
 import { editAppt } from '../../store/appointmentsSlice';
+import { setActiveAppt } from '../../store/activeAppointmentSlice';
 import { v4 as uuid } from 'uuid';
 import { AllowedChecklist } from '../allowedChecklist/AllowedChecklist';
 
 export function EditAppt(props) {
 
     const activeAppt = useSelector((state) => state.activeAppointment.appointment);
+    const appointments = useSelector((state) => state.appointments.appointments)
     const students = useSelector((state) => state.students.students);
     const dispatch = useDispatch()
 
     const offsetTimezone = (date) => {
-        const offsetHours = date.getTimezoneOffset() / 60;
-        const hour = date.toISOString().substring(11,13) - offsetHours;
+        const offsetHours = new Date(date).getTimezoneOffset() / 60;
+        const hour = date.substring(11,13) - offsetHours;
         if (hour.toString().length < 2) {
-            return `0${hour}${date.toISOString().substring(13,16)}`
+            return `0${hour}${date.substring(13,16)}`
         } else {
-            return `${hour}${date.toISOString().substring(13,16)}`
+            return `${hour}${date.substring(13,16)}`
         }
     }
 
@@ -29,7 +31,7 @@ export function EditAppt(props) {
     const [appt, setAppt] = useState(activeAppt)
     const [apptInfo, setApptInfo] = useState({
         time: offsetTimezone(activeAppt.date),
-        day: activeAppt.date.toISOString().substring(0,10),
+        day: activeAppt.date.substring(0,10),
         student: student.name,
         section: section.name
     })
@@ -69,9 +71,11 @@ export function EditAppt(props) {
         }
 
         dispatch(editAppt({
-            apptToChange: activeAppt,
+            apptIndex: appointments.indexOf(activeAppt),
             newAppt: newAppt
         }))
+
+        dispatch(setActiveAppt(newAppt))
 
         handleCancelClick()
     }

@@ -16,11 +16,10 @@ export const appointmentsSlice = createSlice({
     },
     editAppt: (state, action) => {
 
-      const {apptToChange, newAppt} = action.payload;
-      const index = state.appointments.indexOf(apptToChange);
+      const {apptIndex, newAppt} = action.payload;
 
       const newAppointments = [...state.appointments]
-      newAppointments[index] = newAppt
+      newAppointments[apptIndex] = newAppt
 
       state.appointments = newAppointments
     }

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { addAppt } from '../../store/appointmentsSlice';
-import { setAppt } from '../../store/activeAppointmentSlice';
-import { Appointment } from '../../utils/appointment'
+import { setActiveAppt } from '../../store/activeAppointmentSlice';
 import './makeAppt.css';
 import { Link } from 'react-router-dom';
 import { setDate } from '../../store/firstCalendarDateSlice';
+import { v4 as uuid } from 'uuid'
 
 
 // Display class options
@@ -31,7 +31,7 @@ export function MakeAppt({ setActiveTab }) {
 
   useEffect(() => {
     setActiveTab(2)
-    dispatch(setAppt(null))
+    dispatch(setActiveAppt(null))
   }, [])
 
   const students = useSelector((state) => state.students.students);
@@ -68,6 +68,7 @@ export function MakeAppt({ setActiveTab }) {
     if (section) {
 
       const appointment = {
+        key: uuid(),
         student: studentObj.key,
         section: section,
         date: date.toISOString(),
@@ -83,7 +84,7 @@ export function MakeAppt({ setActiveTab }) {
   }
 
   const handleViewApptClick = () => {
-    dispatch(setAppt(apptSelect))
+    dispatch(setActiveAppt(apptSelect))
     dispatch(setDate(apptSelect.date))
   }
 

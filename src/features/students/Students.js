@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { setAppt } from '../../store/activeAppointmentSlice'
+import { setActiveAppt } from '../../store/activeAppointmentSlice'
 import { v4 as uuid } from 'uuid'
 import { StudentInfo } from "../studentInfo/StudentInfo"
 import { AddStudent } from "../addStudent/AddStudent"
@@ -13,7 +13,7 @@ export function Students({ setActiveTab }) {
 
     useEffect(() => {
       setActiveTab(3)
-      dispatch(setAppt(null))
+      dispatch(setActiveAppt(null))
     }, [])
 
     const [add, setAdd] = useState(false)
