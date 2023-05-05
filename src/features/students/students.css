@@ -1,0 +1,30 @@
+
+.students-content {
+    padding: 50px;
+}
+
+.student-lookup {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.student-lookup input {
+    height: 32px;
+    width: 200px;
+    padding: 1%;
+}
+
+.student-lookup button {
+    height: 32px;
+    width: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5px;
+}
+
+.student-lookup button img {
+    height: 50%;
+}

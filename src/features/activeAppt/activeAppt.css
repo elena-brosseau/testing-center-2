@@ -61,6 +61,7 @@
 
 .appt-class {
     grid-column: span 2;
+    padding-bottom: 4px;
     border-bottom: 2px solid black;
     font-size: 18px;
 }

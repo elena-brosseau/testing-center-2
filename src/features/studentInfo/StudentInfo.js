@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import editIcon from '../../assets/edit-text.png'
 import './studentInfo.css'
 import { EditStudent } from '../editStudent/EditStudent';
+import { Section } from '../section/Section';
 
 
 export function StudentInfo({ student }) {
@@ -11,31 +13,41 @@ export function StudentInfo({ student }) {
         <div>
             {!edit
             ? <div>
-                <button onClick={() => setEdit(true)}>edit</button>
-                <div>
-                    <p>{student.name}</p>
-                    <p>{student.id}</p>
-                    <p>{student.phone}</p>
-                </div>
-                <div>
-                    <p>Accommodations:</p>
-                    <ul>
-                        {student.accomms.map((accomm, index) =>
-                            <li key={index}>{accomm}</li>
-                        )}
-                        <li>{student.extraTime}</li>
-                    </ul>
-                </div>
-                <div>
-                    <p>Classes:</p>
-                    {student.classes.map((section, index) => 
-                        <div key={index}>
-                            <p>{section.name}</p>
-                            <p>{section.professor}</p>
-                            <p>{section.days.join(', ')}</p>
-                            <p>{section.time}</p>
+                <div className='student-info-grid'>
+                    <div className='student-info'>
+                        <div className='student-info-edit-btn'>
+                            <p className="student-name">{student.name}</p>
+                            <button 
+                                onClick={() => setEdit(true)}
+                            >
+                                <img
+                                    src={editIcon}
+                                />
+                            </button>
                         </div>
-                    )}
+                        <p>{student.id}</p>
+                        <p>{student.phone}</p>
+                    </div>
+                    <div className="left">
+                        <p className="title">Acommodations:</p>
+                        <ul>
+                            {student.accomms.map((accomm, index) =>
+                                <li key={index}>{accomm}</li>
+                            )}
+                            <li>{student.extraTime}</li>
+                        </ul>
+                    </div>
+                    <p className='classes-title'>Classes:</p>
+                    <div className='classes'>
+                        {student.classes.map((section, index) => 
+                            <Section
+                                key={index}
+                                section={section}
+                                active={false}
+                                onClick={() => {}}
+                            />
+                        )}
+                    </div>
                 </div>
             </div>
             : <EditStudent

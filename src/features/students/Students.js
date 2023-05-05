@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react"
+import './students.css'
+import addIcon from '../../assets/add.png';
 import { useDispatch, useSelector } from "react-redux"
 import { setActiveAppt } from '../../store/activeAppointmentSlice'
 import { v4 as uuid } from 'uuid'
@@ -17,7 +19,6 @@ export function Students({ setActiveTab }) {
     }, [])
 
     const [add, setAdd] = useState(false)
-    const [lookup, setLookup] = useState(false)
     const [lookupStudent, setLookupStudent] = useState('')
 
     const lookupStudentObj = students.find(student => student.name === lookupStudent)
@@ -26,45 +27,41 @@ export function Students({ setActiveTab }) {
         setAdd(add ? false : true)
     }
 
-    const handleLookupClick = () => {
-        setLookup(lookup ? false : true)
-    }
-
     const handleLookupChange = (e) => {
         setLookupStudent(e.target.value)
     }
 
 
     return (
-        <div>
+        <div className="students-content">
             {add
             ? <div>
                 <button onClick={handleAddClick}>Back</button>
                 <AddStudent
+                    name={lookupStudent}
                     setAdd={setAdd}
-                    setLookup={setLookup}
                     setLookupStudent={setLookupStudent}
                 />
               </div>
-            : lookup
-            ? <div>
-                <button onClick={handleLookupClick}>Back</button>
-                <p>lookup</p>
-                <input
-                    list='students'
-                    name='student'
-                    value={lookupStudent}
-                    onChange={handleLookupChange}
-                />
-                <datalist id='students'>
-                    {students.map(student => <option key={uuid()}>{student.name}</option>)}
-                </datalist>
-                {lookupStudentObj && <StudentInfo student={lookupStudentObj} />}
-              </div>
             : <div>
-                <h1>Students</h1>
-                <button onClick={handleAddClick}>Add Student</button>
-                <button onClick={handleLookupClick}>Lookup Student</button>
+                <div className="student-lookup">
+                    <input
+                        list='students'
+                        name='student'
+                        value={lookupStudent}
+                        onChange={handleLookupChange}
+                    />
+                    <datalist id='students'>
+                        {students.map(student => <option key={uuid()}>{student.name}</option>)}
+                    </datalist>
+                    <button onClick={handleAddClick}>
+                        <img
+                            src={addIcon}
+                            alt="Add Student"
+                        />
+                    </button>
+                </div>
+                {lookupStudentObj && <StudentInfo student={lookupStudentObj} />}
               </div>}
         </div>
 

@@ -2,9 +2,10 @@ import { useState } from 'react'
 import './addStudent.css'
 import { EditStudent } from '../editStudent/EditStudent'
 
-export function AddStudent({ setAdd, setLookup, setLookupStudent}) {
+export function AddStudent({ name, setAdd, setLookupStudent}) {
 
     const [student, setStudent] = useState({
+        name: name,
         accomms: [],
         classes: []
     })
@@ -12,7 +13,6 @@ export function AddStudent({ setAdd, setLookup, setLookupStudent}) {
 
     const handleDetailsClick = () => {
         setAdd(false)
-        setLookup(true)
         setLookupStudent(student.name)
     }
 

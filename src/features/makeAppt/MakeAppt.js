@@ -6,24 +6,8 @@ import './makeAppt.css';
 import { Link } from 'react-router-dom';
 import { setDate } from '../../store/firstCalendarDateSlice';
 import { v4 as uuid } from 'uuid'
+import { Section } from '../section/Section';
 
-
-// Display class options
-function Section({ active, section, onClick}) {
-    
-    return (
-      <div 
-        data-testid='section'
-        onClick={onClick}
-        className={active ? 'highlight' : ''}
-      >
-        <p>{section.name}</p>
-        <p>{section.professor}</p>
-        <p>{section.days.join(', ')}</p>
-        <p>{section.time}</p>
-      </div>
-    )
-}
 
 export function MakeAppt({ setActiveTab }) {
 
