@@ -3,13 +3,12 @@
 .active-appt {
     overflow-y: scroll;
     height: 90%;
-    margin: 20px;
+    padding: 20px;
 }
 
 .active-appt-header {
     display: flex;
     justify-content: space-between;
-    padding: 20px 5% 0;
 }
 
 .active-appt h2 {
@@ -17,11 +16,21 @@
     font-weight: 500;
 }
 
+.active-appt-header button {
+    height: 25px;
+    width: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.active-appt-header button img {
+    height: 70%;
+}
+
 .active-appt-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding: 0 5%;
-    margin: 0 0 50px;
 }
 
 .active-appt-grid.lower {

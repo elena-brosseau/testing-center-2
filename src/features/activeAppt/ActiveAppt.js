@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import './activeAppt.css';
+import editIcon from '../../assets/edit-text.png'
 import { useEffect, useState } from "react";
 import { EditAppt } from '../editAppt/EditAppt';
 import { getISODay, getISOTime, totalTime } from "../../utils/appointment";
@@ -18,9 +19,6 @@ export function ActiveAppt({ setActiveTab }) {
     
     const [editMode, setEditMode] = useState(false);
 
-    const handleEditClick = () => {
-        setEditMode(true)
-    }
 
     return (
         <div>
@@ -29,7 +27,10 @@ export function ActiveAppt({ setActiveTab }) {
             : <div className="active-appt">
                 <div className='active-appt-header'>
                     <h2>Appointment Information</h2>
-                    {activeAppt && <button onClick={handleEditClick}>edit</button>}
+                    {activeAppt 
+                    && <button onClick={() => {setEditMode(true)}}>
+                            <img src={editIcon}/>
+                        </button>}
                 </div>
                 {activeAppt &&
                     <div className="active-appt-grid">

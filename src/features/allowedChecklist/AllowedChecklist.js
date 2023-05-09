@@ -2,7 +2,7 @@ import './allowedChecklist.css';
 
 export function AllowedChecklist({ allowed, setAllowed }) {
 
-    const options = ['Scrap Paper', 'Dictionary', 'Calculator', 'Open Book', 'Other'];
+    const options = ['Scrap Paper', 'Dictionary', 'Calculator', 'Formula Sheet', 'Open Book'];
 
     const handleSelect = (e) => {
         const checked = e.target.checked;
@@ -16,10 +16,11 @@ export function AllowedChecklist({ allowed, setAllowed }) {
 
 
     return (
-        <div>
+        <div className='allowed-options'>
             <p>Allowed Materials:</p>
             {options.map((item, index) => 
                 <div key={index} className="checkbox-container">
+                    <label>{item}</label>
                     <input
                     type="checkbox"
                     name="allowed"
@@ -27,7 +28,6 @@ export function AllowedChecklist({ allowed, setAllowed }) {
                     onChange={handleSelect}
                     defaultChecked={allowed.includes(item)}
                     />
-                    <label>{item}</label>
                 </div>
             )}
           </div>

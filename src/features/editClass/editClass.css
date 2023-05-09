@@ -1,0 +1,30 @@
+
+
+.edit-class {
+    margin: 15px 0;
+    border-bottom: 1px dashed black;
+}
+
+.edit-class .row {
+    display: flex;
+    margin: 10px 0;
+}
+
+.edit-class .row input[type='text'] {
+    padding: .5%;
+    margin: 0 5px 5px 0;
+}
+
+.edit-class .row input[type='text']:nth-child(1),
+.edit-class .row input[type='text']:nth-child(3) {
+    width: 80px;
+}
+
+.edit-class .row label {
+    margin: 0 10px 0 5px;
+}
+
+.edit-class button {
+    margin: 0 5px 15px 0;
+    padding: .5%;
+}

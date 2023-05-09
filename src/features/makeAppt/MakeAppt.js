@@ -20,7 +20,7 @@ export function MakeAppt({ setActiveTab }) {
 
   const students = useSelector((state) => state.students.students);
 
-  const [require, setRequire] = useState(false);
+  const [require, setRequire] = useState({});
   const [confirmed, setConfirmed] = useState(false);
   const [apptSelect, setApptSelect] = useState(null);
   const [section, setSection] = useState(null);
@@ -37,6 +37,22 @@ export function MakeAppt({ setActiveTab }) {
   const day = apptInfo.day.split('-')
   const time = apptInfo.time.split(':')
   const date = new Date(day[0], --day[1], day[2], time[0], time[1])
+
+
+
+  useEffect(() => {
+    // reset section if student changes
+    if (!studentObj) {
+      setSection(null)
+    }
+    // reset require if student changes
+    if (require.student && studentObj) {
+      setRequire ({
+        ...require,
+        student: false
+      })
+    }
+  }, [studentObj])
 
   const handleChange = (e) => {
     setApptInfo({
@@ -63,9 +79,20 @@ export function MakeAppt({ setActiveTab }) {
       setApptSelect(appointment)
       setConfirmed(true)
     } else {
-      setRequire(true)
+      if (!studentObj) {
+        setRequire({
+          ...require,
+          student: true
+        })
+      } else {
+        setRequire({
+          ...require,
+          section: true
+        })
+      }
     }
   }
+
 
   const handleViewApptClick = () => {
     dispatch(setActiveAppt(apptSelect))
@@ -85,60 +112,88 @@ export function MakeAppt({ setActiveTab }) {
   return  (
               <div>
                 {confirmed
-                ? <div>
-                    <p>Appointment Scheduled:</p>
-                    <p>{apptInfo.student}</p>
-                    <p>{section.name}, {section.professor}</p>
-                    <p>{date.toDateString()}</p>
-                    <p>{date.toLocaleTimeString().replace(/(.*)\D\d+/, '$1')}</p>
-                    <Link to='/'>
-                      <button onClick={handleViewApptClick}>
-                        View Appointment Details
+                ? <div className='appt-confirmation'>
+                    <p className='title'>Appointment Scheduled:</p>
+                    <div className='section'>
+                      <p>{apptInfo.student}</p>
+                      <p>{section.name} / {section.professor}</p>
+                    </div>
+                    <div className='section'>
+                      <p>{date.toDateString()}</p>
+                      <p>{date.toLocaleTimeString().replace(/(.*)\D\d+/, '$1')}</p>
+                    </div>
+                    <div className='btns'>
+                      <Link to='/'>
+                        <button onClick={handleViewApptClick}>
+                          View Appointment Details
+                        </button>
+                      </Link>
+                      <button onClick={resetForm}>
+                        Make Another Appointment
                       </button>
-                    </Link>
-                    <button onClick={resetForm}>
-                      Make Another Appointment
-                    </button>
+                    </div>
                   </div>
                 : <form
                     id='appt-form'
                     onSubmit={handleSubmit}
-                    className={require ? 'require' : ''}
                   >
-                    <input
-                        type='date'
-                        name='day'
-                        value={apptInfo.day}
-                        onChange={handleChange}
-                        required
-                    />
-                    <input
-                        type='time'
-                        name='time'
-                        value={apptInfo.time}
-                        onChange={handleChange}
-                        required
-                    />
-                    <input
-                        type='text'
-                        name='student'
-                        value={apptInfo.student}
-                        onChange={handleChange}
-                        placeholder='Student Search'
-                        required
-                    />
-                    {studentObj && studentObj.classes.map((option, index) => 
-                      <Section
-                        key={index}
-                        section={option}
-                        active={option === section}
-                        onClick={() => {
-                          setSection(option)
-                          setRequire(false)
-                        }}
+                    <div className='section'>
+                      <p>Date & Time:</p>
+                      <input
+                          type='date'
+                          name='day'
+                          value={apptInfo.day}
+                          onChange={handleChange}
+                          required
                       />
-                    )}
-                    <button type='submit'>Save</button>
+                      <input
+                          type='time'
+                          name='time'
+                          value={apptInfo.time}
+                          onChange={handleChange}
+                          required
+                      />
+                    </div>
+                    <div className='section'>
+                      <p>Student:</p>
+                      <input
+                          type='text'
+                          name='student'
+                          value={apptInfo.student}
+                          onChange={handleChange}
+                          placeholder='Student Search'
+                          required
+                      />
+                      {(require.student)
+                        && <p className='require'>Student not found.</p>
+                      }
+                    </div>
+                    <div className='section'>
+                      {studentObj 
+                      && <div>
+                          <p>Classes:</p>
+                          {(studentObj.classes.length < 1)
+                          && <p className='require'>This student has no saved classes.</p>}
+                          {studentObj.classes.map((option, index) => 
+                          <Section
+                            key={index}
+                            section={option}
+                            active={option === section}
+                            onClick={() => {
+                              setSection(option)
+                              setRequire({
+                                student: false,
+                                section: false
+                              })
+                            }}
+                          />
+                        )}
+                        {(require.section)
+                          && <p className='require'>Please select a class.</p>
+                        }
+                        </div>}
+                    </div>
+                    <button type='submit'>Confirm</button>
                   </form>
                 } 
               </div>

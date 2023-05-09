@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Section } from "../section/Section"
 import './editClass.css';
 
 
@@ -12,7 +13,7 @@ export function EditClass({ section, editMode, studentInfo, setStudentInfo, setA
         time: section ? section.time : ''
     })
 
-    const weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
+    const weekdays = ['Mon', 'Tues', 'Wed', 'Thurs', 'Fri']
 
     const handleInfoChange = (e) => {
         setSectionInfo({
@@ -58,49 +59,54 @@ export function EditClass({ section, editMode, studentInfo, setStudentInfo, setA
         <div>
             {!edit
             ? <div>
-                <p>{section.name}</p>
-                <p>{section.professor}</p>
-                <p>{section.days.join(', ')}</p>
-                <p>{section.time}</p>
-                <button onClick={() => setEdit(true)}>edit</button>
+                <Section
+                    active={false}
+                    section={section}
+                    edit={true}
+                    setEdit={setEdit}
+                />
             </div>
-            : <div>
-                <input
-                    type='text'
-                    name='name'
-                    value={sectionInfo.name}
-                    onChange={handleInfoChange}
-                    placeholder="Class Code"
-                    required
-                />
-                <input
-                    type='text'
-                    name='professor'
-                    value={sectionInfo.professor}
-                    onChange={handleInfoChange}
-                    placeholder="Professor"
-                    required
-                />
-                {weekdays.map((day, index) =>
-                    <div key={index}>
-                        <input
-                            type="checkbox"
-                            name="days"
-                            value={day}
-                            onChange={handleDaySelect}
-                            defaultChecked={sectionInfo.days.includes(day)}
-                        />
-                        <label>{day}</label>
-                    </div>
-                )}
-                <input
-                    type='text'
-                    name='time'
-                    value={sectionInfo.time}
-                    onChange={handleInfoChange}
-                    placeholder="Time"
-                    required
-                />
+            : <div className="edit-class">
+                <div className="row text">
+                    <input
+                        type='text'
+                        name='name'
+                        value={sectionInfo.name}
+                        onChange={handleInfoChange}
+                        placeholder="Class"
+                        required
+                    />
+                    <input
+                        type='text'
+                        name='professor'
+                        value={sectionInfo.professor}
+                        onChange={handleInfoChange}
+                        placeholder="Professor"
+                        required
+                    />
+                    <input
+                        type='text'
+                        name='time'
+                        value={sectionInfo.time}
+                        onChange={handleInfoChange}
+                        placeholder="Time"
+                        required
+                    />
+                </div>
+                <div className="row">
+                        {weekdays.map((day, index) =>
+                            <div key={index}>
+                                <input
+                                    type="checkbox"
+                                    name="days"
+                                    value={day}
+                                    onChange={handleDaySelect}
+                                    defaultChecked={sectionInfo.days.includes(day)}
+                                />
+                                <label>{day}</label>
+                            </div>
+                        )}
+                </div>
                 <button onClick={handleCancel}>Cancel</button>
                 <button onClick={handleSubmit}>Save</button>
             </div>

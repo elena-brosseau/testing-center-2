@@ -1,0 +1,92 @@
+
+
+.edit-student-form {
+    display: grid;
+    grid-template-columns: .8fr 1.2fr;
+    margin-top: 20px;
+}
+
+.edit-student-info input {
+    font-size: .9rem;
+    padding: 2%;
+    width: 100%;
+}
+
+.edit-student-info p {
+    margin: 15px 0 5px;
+}
+
+.edit-accomms {
+    text-align: end;
+    margin-top: 15px;
+}
+
+.edit-accomms p {
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.edit-accomms .checkbox-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 5px 0;
+}
+
+.checkbox-container input {
+    accent-color: rgb(61, 151, 9);
+}
+
+.accomm-options input {
+    margin-left: 5px;
+}
+
+.edit-accomms .extra {
+    margin-top: 30px;
+}
+
+.extra-options {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.extra-options input {
+    margin: 0 5px 0 10px;
+}
+
+.edit-classes {
+    grid-column: span 2;
+}
+
+.edit-classes .title {
+    padding-bottom: 4px;
+    border-bottom: 2px solid black;
+    font-size: 18px;
+    display: flex;
+}
+
+.addClassBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-left: 10px;
+}
+
+.addClassBtn img {
+    height: 70%;
+}
+
+.end-btns {
+    grid-column: span 2;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 40px;
+}
+
+.end-btns button {
+    margin-left: 8px;
+    padding: 1%;
+}
+

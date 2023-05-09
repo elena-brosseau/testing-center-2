@@ -16,7 +16,7 @@ export const appointments = [
         test: true,
         form: true,
         allowed: ['Scrap Paper', 'Calculator', 'Other: 1 sheet of notes'],
-        format: 'In File Cabinet',
+        format: 'Hard Copy',
         classTime: 75,
         returnPref: 'Email',
         notes: '3/24- professor included formula sheet -EB'
@@ -29,7 +29,7 @@ export const appointments = [
         test: true,
         form: true,
         allowed: ['Scrap Paper', 'Calculator'],
-        format: 'In File Cabinet',
+        format: 'Hard Copy',
         classTime: 75,
         returnPref: 'Email',
         notes: '3/27- rescheduled from 3/28 -EB'
@@ -73,7 +73,7 @@ export const appointments = [
         test: true,
         form: true,
         allowed: ['Scrap Paper', 'Calculator', 'Other: 1 sheet of notes'],
-        format: 'In File Cabinet',
+        format: 'Hard Copy',
         classTime: 75,
         returnPref: 'Email',
         notes: '3/24- professor included formula sheet -EB'
@@ -108,7 +108,7 @@ export const appointments = [
         test: true,
         form: true,
         allowed: ['Scrap Paper', 'Calculator', 'Other: 1 sheet of notes'],
-        format: 'In File Cabinet',
+        format: 'Hard Copy',
         classTime: 75,
         returnPref: 'Email',
         notes: '3/24- professor included formula sheet -EB'

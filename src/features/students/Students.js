@@ -19,13 +19,13 @@ export function Students({ setActiveTab }) {
     }, [])
 
     const [add, setAdd] = useState(false)
+    const [edit, setEdit] = useState(false)
     const [lookupStudent, setLookupStudent] = useState('')
+
+    const searchBar = (add || edit) ? false : true
 
     const lookupStudentObj = students.find(student => student.name === lookupStudent)
 
-    const handleAddClick = () => {
-        setAdd(add ? false : true)
-    }
 
     const handleLookupChange = (e) => {
         setLookupStudent(e.target.value)
@@ -34,9 +34,27 @@ export function Students({ setActiveTab }) {
 
     return (
         <div className="students-content">
+            {searchBar
+            && <div className="student-lookup">
+                <input
+                    list='students'
+                    name='student'
+                    value={lookupStudent}
+                    onChange={handleLookupChange}
+                    placeholder="Student Search"
+                />
+                <datalist id='students'>
+                    {students.map(student => <option key={uuid()}>{student.name}</option>)}
+                </datalist>
+                <button onClick={() => {setAdd(true)}}>
+                    <img
+                        src={addIcon}
+                        alt="Add Student"
+                    />
+                </button>
+            </div>}
             {add
             ? <div>
-                <button onClick={handleAddClick}>Back</button>
                 <AddStudent
                     name={lookupStudent}
                     setAdd={setAdd}
@@ -44,24 +62,13 @@ export function Students({ setActiveTab }) {
                 />
               </div>
             : <div>
-                <div className="student-lookup">
-                    <input
-                        list='students'
-                        name='student'
-                        value={lookupStudent}
-                        onChange={handleLookupChange}
-                    />
-                    <datalist id='students'>
-                        {students.map(student => <option key={uuid()}>{student.name}</option>)}
-                    </datalist>
-                    <button onClick={handleAddClick}>
-                        <img
-                            src={addIcon}
-                            alt="Add Student"
-                        />
-                    </button>
-                </div>
-                {lookupStudentObj && <StudentInfo student={lookupStudentObj} />}
+                {lookupStudentObj 
+                && <StudentInfo
+                        student={lookupStudentObj}
+                        setSearch={setLookupStudent}
+                        edit={edit}
+                        setEdit={setEdit}
+                    />}
               </div>}
         </div>
 

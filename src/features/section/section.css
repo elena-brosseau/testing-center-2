@@ -1,6 +1,7 @@
 
 
-.student-info-grid .section-info {
+.student-info-grid .section-info,
+.edit-classes .section-info {
     width: 100%;
     margin: 10px 0;
     padding: 12px 0;
@@ -13,6 +14,23 @@
     margin: 10px 0;
     padding: 10px;
     border-radius: 10px;
+}
+
+.edit-classes .section-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.edit-classes .section-info button {
+    height: 20px;
+    width: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit-classes .section-info img {
+    height: 70%;
 }
 
 .section-info.highlight {

@@ -1,0 +1,71 @@
+
+
+.edit-appt-form {
+    display: grid;
+    grid-template-columns: 1.4fr .6fr;
+    margin-top: 30px;
+}
+
+.edit-appt-form .key-info {
+    margin-bottom: 30px;
+}
+
+.edit-appt-form .key-info input,
+.edit-appt-form .key-info select,
+.edit-appt-form .extra-info input,
+.edit-appt-form .after-test input {
+    height: 32px;
+    padding: 0 5px;
+    margin: 0 6px 6px 0;
+    font-size: 1rem;
+}
+
+.edit-appt-form .key-info .time {
+    width: 127px;
+}
+
+.edit-appt-form .checks {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.edit-appt-form .extra-info p {
+    margin: 8px 0 5px;
+}
+
+.edit-appt-form .extra-info .time {
+    display: flex;
+}
+
+.edit-appt-form .extra-info .time input {
+    width: 70px;
+    margin-left: 10px;
+}
+
+.edit-appt-form .checkbox-container {
+    margin-bottom: 10px;
+}
+
+.edit-appt-form .checkbox-container input {
+    margin-left: 5px;
+}
+
+.edit-appt-form .notes {
+    grid-column: span 2;
+}
+
+.edit-appt-form .notes textarea {
+    width: 100%;
+    height: 150px;
+    padding: 5px;
+    resize: none;
+}
+.edit-appt-form .notes p,
+.edit-appt-form .after-test p {
+    margin: 25px 0 5px;
+}
+
+.edit-appt-form .after-test input {
+    width: 150px
+}

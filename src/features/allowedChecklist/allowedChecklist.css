@@ -1,0 +1,12 @@
+
+
+.allowed-options {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.allowed-options p:nth-child(1) {
+    font-weight: 500;
+    margin-bottom: 10px;
+}

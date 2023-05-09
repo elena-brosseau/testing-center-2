@@ -2,9 +2,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { EditClass } from '../editClass/EditClass';
 import { addStudent, editStudent } from '../../store/studentsSlice';
+import addIcon from '../../assets/add.png'
 import './editStudent.css'
 
-export function EditStudent({ student, setEdit, setStudent }) {
+export function EditStudent({ student, discard, setEdit, setSearch, setStudent }) {
 
     const students = useSelector((state) => state.students.students)
     const dispatch = useDispatch();
@@ -12,8 +13,8 @@ export function EditStudent({ student, setEdit, setStudent }) {
     const [addClass, setAddClass] = useState(false);
     const [studentInfo, setStudentInfo] = useState(student);
 
-    const accommOptions = ['Reader', 'Word Processor', 'Calculator', 'Scantron Assistance', 'Scribe', 'Short Breaks', 'Food and Drink']
-    const extraTimeOptions = ['1.5', '2.0', '1.0']
+    const accommOptions = ['Reader', 'Word Processor', 'Calculator', 'Scantron Assistance', 'Scribe', 'Short Breaks']
+    const extraTimeOptions = ['1.0', '1.5', '2.0']
 
     const handleInfoChange = (e) => {
         setStudentInfo({
@@ -55,78 +56,106 @@ export function EditStudent({ student, setEdit, setStudent }) {
         }
 
         setEdit(false)
+        setSearch && setSearch(studentInfo.name)
 
     }
 
 
     return (
         <div>
-                <p>Name:</p>
-                <input
-                    type='text'
-                    name='name'
-                    value={studentInfo.name}
-                    onChange={handleInfoChange}
-                />
-                <p>ID:</p>
-                <input
-                    type='text'
-                    name='id'
-                    value={studentInfo.id}
-                    onChange={handleInfoChange}
-                />
-                <p>Phone:</p>
-                <input
-                    type='text'
-                    name='phone'
-                    value={studentInfo.phone}
-                    onChange={handleInfoChange}
-                />
-                <p>Accommodations:</p>
-                {accommOptions.map((accomm, index) => 
-                <div key={index} className="checkbox-container">
+            <div className='active-appt-header'>
+                <h2>Edit Student</h2>
+            </div>
+            <div className='edit-student-form'>
+                <div className='edit-student-info'>
+                    <p>Student Name:</p>
                     <input
-                    type="checkbox"
-                    name="accomms"
-                    value={accomm}
-                    onChange={handleAccommSelect}
-                    defaultChecked={student.accomms.includes(accomm)}
+                        type='text'
+                        name='name'
+                        value={studentInfo.name}
+                        onChange={handleInfoChange}
                     />
-                    <label>{accomm}</label>
-                </div>)}
-                <p>Extra Time:</p>
-                {extraTimeOptions.map((time, index) => 
-                <div key={index} className="checkbox-container">
+                    <p>Student ID:</p>
                     <input
-                    type="radio"
-                    name="extraTime"
-                    value={time}
-                    onChange={handleExtraTimeSelect}
-                    defaultChecked={student.extraTime == time}
+                        type='text'
+                        name='id'
+                        value={studentInfo.id}
+                        onChange={handleInfoChange}
                     />
-                    <label>{time}</label>
-                </div>)}
-                <p>Classes:</p>
-                {studentInfo.classes.map((section, index) => 
-                    <EditClass
-                        key={index}
-                        section={section}
-                        editMode = {false}
+                    <p>Student Phone:</p>
+                    <input
+                        type='text'
+                        name='phone'
+                        value={studentInfo.phone}
+                        onChange={handleInfoChange}
+                    />
+                </div>
+                <div className='edit-accomms'>
+                    <p>Accommodations:</p>
+                    <div className='accomm-options'>
+                        {accommOptions.map((accomm, index) => 
+                        <div key={index} className="checkbox-container">
+                            <label>{accomm}</label>
+                            <input
+                            type="checkbox"
+                            name="accomms"
+                            value={accomm}
+                            onChange={handleAccommSelect}
+                            defaultChecked={student.accomms.includes(accomm)}
+                            />
+                        </div>)}
+                    </div>
+                    <p className='extra'>Extra Time:</p>
+                    <div className='extra-options'>
+                        {extraTimeOptions.map((time, index) => 
+                        <div key={index} className="checkbox-container">
+                            <input
+                            type="radio"
+                            name="extraTime"
+                            value={time}
+                            onChange={handleExtraTimeSelect}
+                            defaultChecked={student.extraTime == time}
+                            />
+                            <label>{time}</label>
+                        </div>)}
+                    </div> 
+                </div>
+                <div className='edit-classes'>
+                    <div className='title'>
+                    <p>Classes</p>
+                    <button 
+                        onClick={() => setAddClass(true)}
+                        className='addClassBtn'
+                    >
+                        <img src={addIcon} />
+
+                    </button>
+                    </div>
+                    {studentInfo.classes.map((section, index) => 
+                        <EditClass
+                            key={index}
+                            section={section}
+                            editMode = {false}
+                            studentInfo={studentInfo}
+                            setStudentInfo={setStudentInfo}
+                            setAddClass={setAddClass}
+                        />
+                    )}
+                    {addClass 
+                    && <EditClass
+                        section = {null}
+                        editMode = {true}
                         studentInfo={studentInfo}
                         setStudentInfo={setStudentInfo}
                         setAddClass={setAddClass}
-                    />
-                )}
-                <button onClick={() => setAddClass(true)}>add class</button>
-                {addClass 
-                && <EditClass
-                    section = {null}
-                    editMode = {true}
-                    studentInfo={studentInfo}
-                    setStudentInfo={setStudentInfo}
-                    setAddClass={setAddClass}
-                />}
-                <button onClick={handleSubmit}>SAVE</button>
-            </div>
+                    />}
+                </div>
+                <div className='end-btns'>
+                    <button onClick={discard}>Discard Changes</button>
+                    <button onClick={handleSubmit}>Save</button>
+                </div>
+                </div>
+        </div>
+        
     )
 }

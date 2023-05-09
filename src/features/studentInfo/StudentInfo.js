@@ -5,9 +5,7 @@ import { EditStudent } from '../editStudent/EditStudent';
 import { Section } from '../section/Section';
 
 
-export function StudentInfo({ student }) {
-
-    const [edit, setEdit] = useState(false);
+export function StudentInfo({ student, setSearch, edit, setEdit }) {
 
     return (
         <div>
@@ -18,7 +16,7 @@ export function StudentInfo({ student }) {
                         <div className='student-info-edit-btn'>
                             <p className="student-name">{student.name}</p>
                             <button 
-                                onClick={() => setEdit(true)}
+                                onClick={() => {setEdit(true)}}
                             >
                                 <img
                                     src={editIcon}
@@ -44,7 +42,6 @@ export function StudentInfo({ student }) {
                                 key={index}
                                 section={section}
                                 active={false}
-                                onClick={() => {}}
                             />
                         )}
                     </div>
@@ -52,7 +49,9 @@ export function StudentInfo({ student }) {
             </div>
             : <EditStudent
                 student={student}
+                discard={() => setEdit(false)}
                 setEdit={setEdit}
+                setSearch={setSearch}
             />
             }
         </div>

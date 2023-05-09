@@ -29,6 +29,7 @@ export function AddStudent({ name, setAdd, setLookupStudent}) {
             {edit
             ? <EditStudent
                 student={student}
+                discard={() => setAdd(false)}
                 setEdit={setEdit}
                 setStudent={setStudent}
             />

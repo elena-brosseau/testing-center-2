@@ -25,21 +25,23 @@ export function Viewport() {
                     className={activeTab == 3 ? 'tab active' : 'tab'}
                 >Students</Link>
             </div>
-            <div className='viewport-content'>
-                <Routes>
-                    <Route
-                        path="/"
-                        element={<ActiveAppt setActiveTab={setActiveTab}/>}
-                    ></Route>
-                    <Route 
-                        path="/make-appointment"
-                        element={<MakeAppt setActiveTab={setActiveTab}/>}
-                    ></Route>
-                    <Route
-                        path="/students"
-                        element={<Students setActiveTab={setActiveTab}/>}
-                    ></Route>
-                </Routes>
+            <div className='viewport-page'>
+                <div className='viewport-content'>
+                    <Routes>
+                        <Route
+                            path="/"
+                            element={<ActiveAppt setActiveTab={setActiveTab}/>}
+                        ></Route>
+                        <Route 
+                            path="/make-appointment"
+                            element={<MakeAppt setActiveTab={setActiveTab}/>}
+                        ></Route>
+                        <Route
+                            path="/students"
+                            element={<Students setActiveTab={setActiveTab}/>}
+                        ></Route>
+                    </Routes>
+                </div>
             </div>
         </div>
     )

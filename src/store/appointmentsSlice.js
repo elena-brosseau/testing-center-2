@@ -2,8 +2,12 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { appointments } from '../utils/appointmentsPreload'
 
+function sort(arr) {
+  return arr.sort((a, b) => a.date.localeCompare(b.date));
+}
+
 const initialState = {
-  appointments: appointments.sort((a, b) => a.date.localeCompare(b.date)),
+  appointments: sort(appointments),
 }
 
 export const appointmentsSlice = createSlice({
@@ -12,7 +16,7 @@ export const appointmentsSlice = createSlice({
   reducers: {
     addAppt: (state, action) => {
         state.appointments.push(action.payload);
-        state.appointments.sort((a, b) => a.date - b.date);
+        sort(state.appointments)
     },
     editAppt: (state, action) => {
 
@@ -22,6 +26,7 @@ export const appointmentsSlice = createSlice({
       newAppointments[apptIndex] = newAppt
 
       state.appointments = newAppointments
+      sort(state.appointments)
     }
   },
 })

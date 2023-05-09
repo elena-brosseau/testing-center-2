@@ -55,12 +55,18 @@ a {
     box-shadow: 1px 0 rgb(144, 144, 144);
 }
 
-.viewport-content {
+.viewport-page {
     border: 1px solid rgb(144, 144, 144);
     box-shadow: 1px 1px rgb(144, 144, 144);
     height: calc(100% - 40px);
     width: 100%;
     background-color: rgb(255, 248, 226);
     border-radius: 15px;
+}
+
+.viewport-content {
+    margin: 30px;
+    width: calc(100% - 60px);
+    height: calc(100% - 60px);
     overflow-y: scroll;
 }
