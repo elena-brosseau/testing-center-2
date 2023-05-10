@@ -17,6 +17,11 @@ a {
     text-decoration: none;
 }
 
+.viewport-tabs a img {
+    height: 20px;
+    display: none;
+}
+
 
 .tab {
     padding: 10px 20px;

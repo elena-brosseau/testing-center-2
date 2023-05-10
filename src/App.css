@@ -20,7 +20,7 @@
   
   #grid {
     display: grid;
-    grid-template-columns: minmax(400px, 600px) minmax(450px, 700px);
+    grid-template-columns: minmax(400px, 600px) minmax(480px, 700px);
   }
 
   button {

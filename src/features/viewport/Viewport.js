@@ -4,6 +4,8 @@ import { ActiveAppt } from '../activeAppt/ActiveAppt';
 import { MakeAppt } from '../makeAppt/MakeAppt';
 import { Students } from '../students/Students';
 import { useState } from 'react';
+import viewIcon from '../../assets/magnifying-glass.png'
+
 
 export function Viewport() {
 
@@ -15,7 +17,10 @@ export function Viewport() {
                 <Link
                     to="/"
                     className={activeTab === 1 ? 'tab active' : 'tab'}
-                >View Appointment</Link>
+                >
+                    <p>View Appointment</p>
+                    <img src={viewIcon} alt='View Appointment'/>
+                </Link>
                 <Link
                     to="/make-appointment"
                     className={activeTab === 2 ? 'tab active' : 'tab'}
