@@ -1,11 +1,13 @@
 import './App.css';
 import { Calendar } from "./features/calendar/Calendar";
+import { Header } from './features/header/Header';
 import { Viewport } from './features/viewport/Viewport';
 
 
 function App() {
   return (
     <main>
+      <Header />
       <div id="grid">
         <Calendar />
         <Viewport />
