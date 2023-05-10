@@ -12,7 +12,42 @@
 }
 
 #calendar-head button {
-  margin-right: 10px;
+  height: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 2px;
+}
+
+#calendar-head .prev-week {
+  margin-right: 6px;
+}
+
+#calendar-head button:nth-child(3) {
+  margin: 0 8px;
+  padding: 0 5px;
+}
+
+#calendar-head button img {
+  height: 60%;
+}
+
+#calendar-head .prev-week img {
+  transform: rotate(90deg);
+}
+
+#calendar-head .next-week img {
+  transform: rotate(-90deg);
+}
+
+#calendar-head input {
+  height: 28px;
+  padding: 0 5px;
+  margin-right: 6px;
+}
+
+#calendar-head:nth-child(5) {
+  padding: 0 5px;
 }
 
 

@@ -8,6 +8,7 @@ import { v4 as uuid } from 'uuid';
 import { Link } from "react-router-dom";
 import { setDate } from "../../store/firstCalendarDateSlice";
 import { setActiveAppt } from "../../store/activeAppointmentSlice";
+import arrowIcon from '../../assets/arrow-down-sign-to-navigate.png'
 
 export function Calendar() {
 
@@ -64,12 +65,16 @@ export function Calendar() {
     return (
         <div id="calendar-container">
             <div id="calendar-head">
-                <button className="prev-week" onClick={handlePrevClick}>Prev</button>
-                <button className="next-week" onClick={handleNextClick}>Next</button>
+                <button className="prev-week" onClick={handlePrevClick}>
+                    <img src={arrowIcon} alt='previous week'/>
+                </button>
+                <button className="next-week" onClick={handleNextClick}>
+                    <img src={arrowIcon} alt='next week'/>
+                </button>
                 <button onClick={handleTodayClick}>Today</button>
                 <form>
                     <input type="date" value={datePicker} onChange={handleDateChange} />
-                    <input type="submit" onClick={handleDateSubmit} hidden/>
+                    <input type="submit" value='Enter' onClick={handleDateSubmit} />
                 </form>
             </div>
             <div id="appt-list">
