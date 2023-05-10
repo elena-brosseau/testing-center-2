@@ -9,7 +9,7 @@ export function ActiveAppt({ setActiveTab }) {
 
     useEffect(() => {
         setActiveTab(1)
-      }, [])
+      }, [setActiveTab])
 
     const activeAppt = useSelector((state) => state.activeAppointment.appointment);
     const students = useSelector((state) => state.students.students)
