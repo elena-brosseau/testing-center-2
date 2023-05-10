@@ -27,7 +27,7 @@ export function nextFiveDates(firstDate, appointments) {
     
         day.date = newNextDay;
         day.appts = appointments.filter((appt) => 
-            getDate(appt.date) == newNextDay.toISOString()
+            getDate(appt.date) === newNextDay.toISOString()
         )
 
         nextFiveDates.push(day);
