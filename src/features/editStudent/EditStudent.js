@@ -114,7 +114,7 @@ export function EditStudent({ student, discard, setEdit, setSearch, setStudent }
                             name="extraTime"
                             value={time}
                             onChange={handleExtraTimeSelect}
-                            defaultChecked={student.extraTime == time}
+                            defaultChecked={student.extraTime === time}
                             />
                             <label>{time}</label>
                         </div>)}
@@ -127,7 +127,7 @@ export function EditStudent({ student, discard, setEdit, setSearch, setStudent }
                         onClick={() => setAddClass(true)}
                         className='addClassBtn'
                     >
-                        <img src={addIcon} />
+                        <img src={addIcon} alt='add icon' />
 
                     </button>
                     </div>

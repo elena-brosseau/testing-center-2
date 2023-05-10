@@ -29,7 +29,7 @@ export function ActiveAppt({ setActiveTab }) {
                     <h2>Appointment Information</h2>
                     {activeAppt 
                     && <button onClick={() => {setEditMode(true)}}>
-                            <img src={editIcon}/>
+                            <img src={editIcon} alt='edit icon'/>
                         </button>}
                 </div>
                 {activeAppt &&

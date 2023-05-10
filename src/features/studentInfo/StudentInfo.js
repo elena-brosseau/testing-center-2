@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import editIcon from '../../assets/edit-text.png'
 import './studentInfo.css'
 import { EditStudent } from '../editStudent/EditStudent';
@@ -20,6 +19,7 @@ export function StudentInfo({ student, setSearch, edit, setEdit }) {
                             >
                                 <img
                                     src={editIcon}
+                                    alt='edit icon'
                                 />
                             </button>
                         </div>

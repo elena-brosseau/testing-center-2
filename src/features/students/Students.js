@@ -16,7 +16,7 @@ export function Students({ setActiveTab }) {
     useEffect(() => {
       setActiveTab(3)
       dispatch(setActiveAppt(null))
-    }, [])
+    }, [setActiveTab, dispatch])
 
     const [add, setAdd] = useState(false)
     const [edit, setEdit] = useState(false)

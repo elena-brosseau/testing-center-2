@@ -26,7 +26,7 @@ export function CalendarAppt ({ appt }) {
 
         <div className="appt-container">
             <div 
-                className={activeAppt == appt ? "appt selected" : "appt"}
+                className={activeAppt === appt ? "appt selected" : "appt"}
                 onClick={(handleClick)}
                 style={{backgroundColor: pending ? '#fff2b3' : '#d6f2bd'}}
             >
@@ -37,7 +37,7 @@ export function CalendarAppt ({ appt }) {
                             <span className="student-name">{student.name}</span>
                         </div>
                         <div className="appt-subhead">
-                            <span className="section">{section.name} // </span>
+                            <span className="section">{section.name} {'//'} </span>
                             <span className="prof">{section.professor}</span>
                         </div>
                     </div>

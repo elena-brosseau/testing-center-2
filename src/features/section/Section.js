@@ -16,7 +16,7 @@ export function Section({ active, section, onClick, edit, setEdit }) {
         {edit
         && <div>
             <button onClick={() => setEdit(true)}>
-              <img src={editIcon} />
+              <img src={editIcon} alt='edit icon' />
             </button>
           </div>}
       </div>

@@ -16,7 +16,7 @@ export function MakeAppt({ setActiveTab }) {
   useEffect(() => {
     setActiveTab(2)
     dispatch(setActiveAppt(null))
-  }, [])
+  }, [setActiveTab, dispatch])
 
   const students = useSelector((state) => state.students.students);
 
@@ -52,7 +52,7 @@ export function MakeAppt({ setActiveTab }) {
         student: false
       })
     }
-  }, [studentObj])
+  }, [studentObj, require])
 
   const handleChange = (e) => {
     setApptInfo({

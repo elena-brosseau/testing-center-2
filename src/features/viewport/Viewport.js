@@ -14,15 +14,15 @@ export function Viewport() {
             <div className='viewport-tabs'>
                 <Link
                     to="/"
-                    className={activeTab == 1 ? 'tab active' : 'tab'}
+                    className={activeTab === 1 ? 'tab active' : 'tab'}
                 >View Appointment</Link>
                 <Link
                     to="/make-appointment"
-                    className={activeTab == 2 ? 'tab active' : 'tab'}
+                    className={activeTab === 2 ? 'tab active' : 'tab'}
                 >Make Appointment</Link>
                 <Link
                     to="/students"
-                    className={activeTab == 3 ? 'tab active' : 'tab'}
+                    className={activeTab === 3 ? 'tab active' : 'tab'}
                 >Students</Link>
             </div>
             <div className='viewport-page'>

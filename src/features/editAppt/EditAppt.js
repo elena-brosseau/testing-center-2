@@ -41,7 +41,7 @@ export function EditAppt({ setEditMode }) {
     // reset is user selects a diff appt
     useEffect(() => {
         activeAppt.key !== appt.key && setEditMode(false)
-    }, [activeAppt])
+    }, [activeAppt, appt.key, setEditMode])
 
     const handleApptChange = (e) => {
         setAppt({
