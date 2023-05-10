@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/testing-center-2/static/css/main.c9d45aa8.css",
+    "main.js": "/testing-center-2/static/js/main.16ce4a02.js",
+    "index.html": "/testing-center-2/index.html",
+    "main.c9d45aa8.css.map": "/testing-center-2/static/css/main.c9d45aa8.css.map",
+    "main.16ce4a02.js.map": "/testing-center-2/static/js/main.16ce4a02.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c9d45aa8.css",
+    "static/js/main.16ce4a02.js"
+  ]
+}
