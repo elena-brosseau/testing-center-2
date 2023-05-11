@@ -32,8 +32,9 @@ export function ActiveAppt({ setActiveTab }) {
                             <img src={editIcon} alt='edit icon'/>
                         </button>}
                 </div>
-                {activeAppt &&
-                    <div className="active-appt-grid">
+                {!activeAppt 
+                ? <p className="select">Select an appointment to view details.</p>
+                : <div className="active-appt-grid">
                         <div>
                             <p>{getISOTime(activeAppt.date)}</p>
                             <p>{getISODay(activeAppt.date)}</p>
@@ -51,7 +52,10 @@ export function ActiveAppt({ setActiveTab }) {
                             }
                         </div>
                         <div className='student-info'>
-                            <p className="student-name">{student.name}</p>
+                            <p
+                                className="student-name"
+                                data-testid='active-name'
+                            >{student.name}</p>
                             <p>{student.id}</p>
                             <p>{student.phone}</p>
                         </div>

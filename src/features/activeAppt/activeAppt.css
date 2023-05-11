@@ -28,6 +28,10 @@
     height: 70%;
 }
 
+.active-appt .select {
+    margin-top: 20px;
+}
+
 .active-appt-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;

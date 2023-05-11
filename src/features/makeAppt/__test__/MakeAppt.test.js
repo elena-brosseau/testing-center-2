@@ -12,9 +12,7 @@ const MockMakeAppt = () => {
     )
 }
 
-afterEach(() => {
-    cleanup();
-})
+afterEach(cleanup)
 
 describe('MakeAppt Form', () => {
 
@@ -46,5 +44,17 @@ describe('MakeAppt Form', () => {
         sectionElements.forEach((e, i) => {
             expect(sectionElements[i]).toBeInTheDocument();
         })
+    })
+
+    test('should prompt when trying to submit without selecting class', () => {
+        render(
+            <MockMakeAppt/>
+        );
+        const studentInputElement = screen.getByPlaceholderText('Student Search');
+        const submitBtn = screen.getByText('Confirm')
+        fireEvent.change(studentInputElement, { target: { value: 'Bob Smith' } })
+        fireEvent.click(submitBtn)
+        const errorMsg = screen.getByText(/Please select a class/i)
+        expect(errorMsg).toBeInTheDocument();
     })
 })

@@ -28,6 +28,7 @@ export function Viewport() {
                 <Link
                     to="/students"
                     className={activeTab === 3 ? 'tab active' : 'tab'}
+                    data-testid='students-tab'
                 >Students</Link>
             </div>
             <div className='viewport-page'>

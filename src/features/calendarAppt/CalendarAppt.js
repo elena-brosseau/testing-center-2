@@ -29,12 +29,13 @@ export function CalendarAppt ({ appt }) {
                 className={activeAppt === appt ? "appt selected" : "appt"}
                 onClick={(handleClick)}
                 style={{backgroundColor: pending ? '#fff2b3' : '#d6f2bd'}}
+                data-testid='calendar-appt'
             >
                 <div className="appt-content">
                     <div className="appt-content-left">
                         <div className="appt-head">
                             <span className="time">{getISOTime(appt.date)} - </span>
-                            <span className="student-name">{student.name}</span>
+                            <span className="student-name" data-testid='calendar-appt-name'>{student.name}</span>
                         </div>
                         <div className="appt-subhead">
                             <span className="section">{section.name} {'//'} </span>
