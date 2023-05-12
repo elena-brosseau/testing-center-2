@@ -21,7 +21,12 @@ The app is currently fully functional on desktop (900px or wider). You can view 
  - Mobile functionality
  - Email API to send automated appointment messages
 
+<br>
+
 ##
+
+<img src='readme/Screen Shot 2023-05-12 at 1.35.53 PM.png' width='40%' align='left'/>
+<img src='readme/Screen Shot 2023-05-12 at 1.37.27 PM.png' width='40%'/>
 
 ## Installation and Setup Instructions 
 
