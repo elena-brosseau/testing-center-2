@@ -6,7 +6,7 @@ I manage a college testing center. We provide and proctor standardized tests, pl
 
 Built using JS, React, React Router, Redux, and Jest. 
 
-Feel free to play around with the live site <a href='https://hellogonzo.github.io/testing-center-2/](https://elena-brosseau.github.io/testing-center-2/' target='_blank' >here</a>.
+Feel free to play around with the live site <a href='https://elena-brosseau.github.io/testing-center-2/' target='_blank' >here</a>.
 
 ##
 <img src='readme/Screen Shot 2023-05-11 at 2.33.18 PM.png' width='600px'/>
